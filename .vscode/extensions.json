@@ -1,0 +1,52 @@
+{
+    "recommendations": [
+        // 필수 개발 도구
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-json",
+
+        // 테마 및 아이콘
+        "zhuangtongfa.material-theme",
+        "pkief.material-icon-theme",
+        "ms-vscode.theme-tomorrowkit",
+
+        // Git 도구
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+
+        // 디버깅
+        "ms-vscode.vscode-js-debug",
+        "ms-vscode.vscode-js-debug-companion",
+
+        // 생산성 도구
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-npm-script",
+        "formulahendry.auto-rename-tag",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-css-peek",
+
+        // 코드 품질
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-typescript-next",
+
+        // Docker 지원
+        "ms-azuretools.vscode-docker",
+
+        // REST API 테스트
+        "humao.rest-client",
+
+        // 데이터베이스
+        "ms-mssql.mssql",
+        "cweijan.vscode-mysql-client2",
+
+        // 유틸리티
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-markdown",
+
+        // AI 도구 (Cursor 관련)
+        "cursor.cursor",
+        "cursor.cursor-ai"
+    ]
+}
