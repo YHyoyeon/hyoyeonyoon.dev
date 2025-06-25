@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import SocialSection from './components/SocialSection'
+import About from './components/About'
+import Experience from './components/Experience'
+import Skills from './components/Skills'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
-import CookieBanner from './components/CookieBanner'
+import ScrollButton from './components/ScrollButton'
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -21,14 +24,17 @@ function App() {
   }, [])
 
   return (
-    <div className="App min-h-screen bg-[#fcfcfc]">
+    <div className="App min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
       <main>
         <Hero scrollProgress={scrollProgress} />
-        <SocialSection />
+        <About />
+        <Experience />
+        <Skills />
+        <Contact />
       </main>
       <Footer />
-      <CookieBanner />
+      <ScrollButton />
     </div>
   )
 }

@@ -1,119 +1,219 @@
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Phone, ExternalLink, ArrowDown, Code, Server, Database } from 'lucide-react'
 
 interface HeroProps {
   scrollProgress: number
 }
 
 const Hero = ({ scrollProgress }: HeroProps) => {
-  const [currentStage, setCurrentStage] = useState(0)
-
-  // Define the 6 stages based on scroll progress
-  const stages = [
-    { title: "MOXY", subtitle: "Software & Design Studio" },
-    { title: "We build", subtitle: "for the web" },
-    { title: "Engineered", subtitle: "Design" },
-    { title: "Porto based", subtitle: "Studio" },
-    { title: "Made with", subtitle: "Love" },
-    { title: "Join our", subtitle: "Team" }
-  ]
-
-  useEffect(() => {
-    const stage = Math.floor(scrollProgress * 6)
-    setCurrentStage(Math.min(stage, 5))
-  }, [scrollProgress])
-
-  const scrollToNext = () => {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
-  }
-
-  const goToStage = (stageIndex: number) => {
-    const targetScroll = (stageIndex / 6) * (document.documentElement.scrollHeight - window.innerHeight)
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' })
+  const handleContact = (type: 'email' | 'phone' | 'blog') => {
+    if (type === 'email') {
+      window.location.href = 'mailto:gydus.dev@gmail.com'
+    } else if (type === 'blog') {
+      window.open('https://dungdung-developer.tistory.com/', '_blank')
+    }
+    // else if (type === 'phone') {
+    //   window.location.href = 'tel:010-****-9980'
+    // }
   }
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f8fcff] via-[#fcfcfc] to-[#f4f4f4]">
-        <div className="absolute inset-0 opacity-30">
-          {/* Floating geometric shapes */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-100 to-blue-100 rounded-full blur-3xl animate-pulse delay-500" />
-        </div>
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),transparent_50%)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221.5%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <div className="mb-16">
-          <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-4 transition-all duration-1000 ease-in-out">
-            {stages[currentStage].title}
-          </h1>
-          <p className="text-2xl md:text-4xl font-light text-gray-600 transition-all duration-1000 ease-in-out delay-300">
-            {stages[currentStage].subtitle}
-          </p>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <a
-            href="/about"
-            aria-label="We build for the web. Find out more."
-            className="cta-button group relative inline-flex items-center px-8 py-4 text-lg font-medium text-gray-900 bg-white/80 border-2 border-gray-300 rounded-full hover:bg-white hover:border-gray-400 backdrop-blur-sm transition-all duration-300"
-          >
-            <span className="relative z-10">Find Out More</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-          </a>
-
-          <a
-            href="/team"
-            aria-label="With love from Porto. Join the team."
-            className="cta-button group relative inline-flex items-center px-8 py-4 text-lg font-medium text-gray-900 bg-white/80 border-2 border-gray-300 rounded-full hover:bg-white hover:border-gray-400 backdrop-blur-sm transition-all duration-300"
-          >
-            <span className="relative z-10">join the team</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-50 to-yellow-50 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-          </a>
-        </div>
-      </div>
-
-      {/* Scroll Progress Indicator */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden md:block">
-        <ul className="flex flex-col space-y-4">
-          {stages.map((stage, index) => (
-            <li key={`${stage.title}-${stage.subtitle}`}>
-              <button
-                aria-label={`move to stage ${index + 1}`}
-                onClick={() => goToStage(index)}
-                className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                  index === currentStage
-                    ? 'bg-gray-900 border-gray-900'
-                    : 'bg-transparent border-gray-400 hover:border-gray-600'
-                }`}
-              >
-                <span className="sr-only">Stage {index + 1}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Scroll Hint */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <button
-          onClick={scrollToNext}
-          className="flex flex-col items-center space-y-2 text-gray-600 hover:text-gray-900 transition-colors duration-300 scroll-hint"
-        >
-          <span className="text-sm font-medium">Scroll</span>
-          <div className="w-px h-8 bg-gray-400" />
-        </button>
-      </div>
+      {/* Floating Elements */}
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-10 text-purple-400/30"
+      >
+        <Code size={40} />
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-40 right-20 text-blue-400/30"
+      >
+        <Server size={40} />
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-40 left-20 text-indigo-400/30"
+      >
+        <Database size={40} />
+      </motion.div>
 
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
+      <div className="fixed top-0 left-0 w-full h-1 bg-slate-800 z-50">
+        <motion.div
+          className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-600"
           style={{ width: `${scrollProgress * 100}%` }}
         />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-6"
+            >
+              <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
+              백엔드 개발자
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            >
+              안녕하세요,<br />
+              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                윤효연
+              </span>
+              입니다
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
+            >
+              C#으로 시작해 현재는 TypeScript를 주력으로 하는 4년 차 백엔드 개발자입니다.
+              NFT Marketplace, 블록체인 지갑 서비스 등 다양한 프로젝트를 경험하며
+              서버, 인프라, DevOps, 프론트까지 두루 경험했습니다.
+            </motion.p>
+
+            {/* Contact Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-center gap-4 mb-8"
+            >
+              <button
+                onClick={() => handleContact('email')}
+                className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <Mail size={20} />
+                gydus.dev@gmail.com
+              </button>
+              <button
+                onClick={() => handleContact('blog')}
+                className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
+              >
+                <ExternalLink size={20} />
+                블로그 보기
+              </button>
+            </motion.div>
+
+            {/* Quick Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-slate-400 text-sm"
+            >
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Profile Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
+              className="relative"
+            >
+              {/* Main Profile Circle */}
+              <div className="w-80 h-80 bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-blue-400/20"></div>
+                <span className="text-8xl font-bold text-white relative z-10">YHY</span>
+                
+                {/* Orbiting Elements */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-400 rounded-full"></div>
+                  <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
+                </motion.div>
+              </div>
+
+              {/* Tech Stack Badges - New Design */}
+              {/* TypeScript - Top */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                className="absolute -top-8 left-1/2 transform -translate-x-1/2"
+              >
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-blue-400/30">
+                  <span className="text-sm font-bold">TypeScript</span>
+                </div>
+              </motion.div>
+
+              {/* Node.js - Bottom */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2"
+              >
+                <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-green-400/30">
+                  <span className="text-sm font-bold">Node.js</span>
+                </div>
+              </motion.div>
+
+              {/* AWS - Right */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
+                className="absolute top-1/2 -right-8 transform -translate-y-1/2"
+              >
+                <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-orange-400/30">
+                  <span className="text-sm font-bold">AWS</span>
+                </div>
+              </motion.div>
+
+              {/* MySQL - Left */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.1, duration: 0.8, ease: "easeOut" }}
+                className="absolute top-1/2 -left-8 transform -translate-y-1/2"
+              >
+                <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-cyan-400/30">
+                  <span className="text-sm font-bold">MySQL</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
