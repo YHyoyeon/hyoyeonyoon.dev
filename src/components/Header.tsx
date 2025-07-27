@@ -14,9 +14,8 @@ const Header = () => {
 	}, []);
 
 	const navItems = [
-		{ name: "소개", href: "#about" },
+		{ name: "소개", href: "#hero" },
 		{ name: "경력", href: "#experience" },
-		{ name: "기술스택", href: "#skills" },
 		{ name: "연락처", href: "#contact" },
 	];
 

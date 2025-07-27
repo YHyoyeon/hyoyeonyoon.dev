@@ -84,7 +84,7 @@ const Experience = () => {
 					icon: Cloud,
 				},
 				{
-					title: "AI를 활용한 팀 리딩과 프론트 백업",
+					title: "AI를 활용한 프론트 백업",
 					description:
 						"거래 프로세스 개선 프로젝트에서 일감 관리, QA 부분적인 리딩을 맡고, 일정을 위해 AI를 활용하여 리액트 프로젝트의 기능 및 UI 수정 백업",
 					icon: Settings,
