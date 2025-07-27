@@ -60,5 +60,6 @@ export const SOCIAL_LINKS = [
 export const SECTIONS = [
   "hero",
   "experience",
+  "skills",
   "contact",
 ] as const;
