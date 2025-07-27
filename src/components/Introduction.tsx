@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { Code, Database, ExternalLink, Mail, Server } from "lucide-react";
+import {
+	Code,
+	Database,
+	ExternalLink,
+	Mail,
+	Server,
+	Github,
+} from "lucide-react";
 import { PERSONAL_INFO } from "../utils/constants";
 
 interface HeroProps {
@@ -7,11 +14,13 @@ interface HeroProps {
 }
 
 const Introduction = ({ scrollProgress }: HeroProps) => {
-	const handleContact = (type: "email" | "phone" | "blog") => {
+	const handleContact = (type: "email" | "phone" | "blog" | "github") => {
 		if (type === "email") {
 			window.location.href = `mailto:${PERSONAL_INFO.EMAIL}`;
 		} else if (type === "blog") {
 			window.open(PERSONAL_INFO.BLOG_URL, "_blank");
+		} else if (type === "github") {
+			window.open("https://github.com/YHyoyeon", "_blank");
 		}
 	};
 
@@ -122,7 +131,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.5, duration: 0.6 }}
-							className="flex flex-col sm:flex-row items-center gap-4 mb-8"
+							className="flex flex-col items-center gap-4 mb-8"
 						>
 							<button
 								onClick={() => handleContact("email")}
@@ -131,13 +140,22 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 								<Mail size={20} />
 								{PERSONAL_INFO.EMAIL}
 							</button>
-							<button
-								onClick={() => handleContact("blog")}
-								className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
-							>
-								<ExternalLink size={20} />
-								블로그 보기
-							</button>
+							<div className="flex flex-col sm:flex-row items-center gap-4">
+								<button
+									onClick={() => handleContact("blog")}
+									className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
+								>
+									<ExternalLink size={20} />
+									블로그 보기
+								</button>
+								<button
+									onClick={() => handleContact("github")}
+									className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
+								>
+									<Github size={20} />
+									GitHub
+								</button>
+							</div>
 						</motion.div>
 
 						{/* Quick Info */}
