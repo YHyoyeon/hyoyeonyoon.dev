@@ -113,11 +113,9 @@ const Skills = () => {
 					className="mt-8 mb-10 text-center"
 				>
 					<p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
-						새로운 기술과 도구에 대한 학습을 멈추지 않고, 실무
-						프로젝트에 적용하여 실질적인 경험을 쌓아왔습니다.
+						새로운 기술과 도구를 지속적으로 학습하고 실무 프로젝트에 적용해왔습니다.
 						<br />
-						특히 AWS 클라우드 인프라와 DevOps 영역에서 지속적으로
-						역량을 키워가고 있습니다.
+						AWS 클라우드 인프라와 DevOps 영역에서 경험을 쌓고 있습니다.
 					</p>
 				</motion.div>
 

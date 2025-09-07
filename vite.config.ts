@@ -7,4 +7,12 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["bippy/dist/jsx-dev-runtime", "bippy/dist/jsx-runtime"],
   },
+  resolve: {
+    preserveSymlinks: true,
+  },
+  build: {
+    commonjsOptions: {
+      include: [],
+    },
+  },
 });

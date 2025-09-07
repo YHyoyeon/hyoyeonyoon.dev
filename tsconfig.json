@@ -13,8 +13,12 @@
       "jsxImportSource": "bippy/dist",
       "strict": true,
       "noFallthroughCasesInSwitch": true,
-      "noEmit": true
+      "noEmit": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true
     },
-    "include": ["src", "vite.config.ts"]
+    "include": ["src", "vite.config.ts"],
+    "exclude": ["node_modules", "dist", ".yarn"]
   }
   

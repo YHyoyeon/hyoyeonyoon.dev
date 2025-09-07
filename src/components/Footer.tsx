@@ -35,13 +35,6 @@ const Footer = () => {
             </p>
           </div>
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="text-center text-gray-500 text-sm">
-            <p>새로운 기회와 도전을 기다리고 있습니다. 언제든지 연락주세요!</p>
-          </div>
-        </div>
       </div>
     </footer>
   );

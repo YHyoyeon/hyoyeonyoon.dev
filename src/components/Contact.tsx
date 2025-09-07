@@ -72,19 +72,17 @@ const Contact = () => {
 						Contact Me
 					</h2>
 					<p className="text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed">
-						새로운 기회와 도전을 기다리고 있습니다.
-						<br />
-						언제든지 연락주세요!
+					개발 관련 이야기나 기술적인 질문이 있으시면 연락주세요
 					</p>
 				</motion.div>
 
-				<div className="grid lg:grid-cols-2 gap-16 items-start">
+				<div className="flex flex-col items-center">
 					{/* Contact Information */}
 					<motion.div
 						initial={{ opacity: 0, x: -50 }}
 						animate={inView ? { opacity: 1, x: 0 } : {}}
 						transition={{ duration: 0.8, delay: 0.3 }}
-						className="space-y-6"
+						className="w-full max-w-2xl"
 					>
 						{contactInfo.map((info, index) => (
 							<motion.div
@@ -117,58 +115,21 @@ const Contact = () => {
 												{info.description}
 											</p>
 											{info.title === "이메일" && (
-												<button
-													onClick={info.action}
-													className="mt-4 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-												>
-													<Send size={16} />
-													연락하기
-												</button>
+												<div className="mt-4 flex justify-center">
+													<button
+														onClick={info.action}
+														className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+													>
+														<Send size={16} />
+														연락하기
+													</button>
+												</div>
 											)}
 										</div>
 									</div>
 								</div>
 							</motion.div>
 						))}
-					</motion.div>
-
-					{/* Status Card */}
-					<motion.div
-						initial={{ opacity: 0, x: 50 }}
-						animate={inView ? { opacity: 1, x: 0 } : {}}
-						transition={{ duration: 0.8, delay: 0.5 }}
-						className="space-y-8"
-					>
-						{/* Availability Status */}
-						<div className="bg-gradient-to-br from-emerald-50 to-green-50 backdrop-blur-sm rounded-2xl p-8 border border-emerald-200/50 shadow-xl">
-							<div className="text-center">
-								<motion.div
-									initial={{ scale: 0 }}
-									animate={inView ? { scale: 1 } : {}}
-									transition={{ delay: 0.6, duration: 0.5 }}
-									className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-								>
-									<Globe className="w-8 h-8 text-white" />
-								</motion.div>
-								<h3 className="text-2xl font-bold text-gray-900 mb-3">
-									구직 상태
-								</h3>
-								<div className="flex items-center justify-center gap-2 mb-4">
-									<div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
-									<span className="text-emerald-700 font-semibold">
-										열린 기회를 찾고 있습니다
-									</span>
-								</div>
-								<p className="text-gray-600 leading-relaxed">
-									새로운 도전과 성장 기회를 기다리고 있습니다.
-									<br />
-									백엔드 개발부터 인프라, DevOps까지 폭넓은
-									경험을 바탕으로
-									<br />
-									귀사의 프로젝트에 기여할 수 있습니다.
-								</p>
-							</div>
-						</div>
 					</motion.div>
 				</div>
 			</div>

@@ -122,8 +122,8 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							PORTAL 사이트 리뉴얼 프로젝트의 인프라 구축을
 							담당하여 백엔드, 인프라, DevOps, 프론트까지 폭넓게
 							경험했습니다. 특히 최근 2년간은 AWS 기반 클라우드
-							아키텍처 설계부터 CI/CD 파이프라인 구축까지 인프라를
-							담당하고 있습니다.
+							아키텍처 설계부터 CI/CD 파이프라인 구축을 담당하여
+							사이트 구축부터 런칭까지 단독 진행이 가능합니다.
 						</motion.p>
 
 						{/* Contact Buttons */}
