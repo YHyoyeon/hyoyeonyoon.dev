@@ -55,7 +55,7 @@ const Header = () => {
 							<button
 								key={item.name}
 								onClick={() => scrollToSection(item.href)}
-								className={`text-sm font-medium transition-colors duration-300 hover:text-blue-600 ${
+								className={`text-sm font-medium transition-colors duration-300 hover:text-orange-600 ${
 									isScrolled ? "text-gray-700" : "text-white"
 								}`}
 							>
@@ -66,7 +66,7 @@ const Header = () => {
 							href="https://github.com/YHyoyeon"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`p-2 rounded-md transition-colors duration-300 hover:text-blue-600 ${
+							className={`p-2 rounded-md transition-colors duration-300 hover:text-orange-600 ${
 								isScrolled ? "text-gray-700" : "text-white"
 							}`}
 						>
@@ -95,7 +95,7 @@ const Header = () => {
 								<button
 									key={item.name}
 									onClick={() => scrollToSection(item.href)}
-									className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-300"
+									className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors duration-300"
 								>
 									{item.name}
 								</button>
@@ -104,7 +104,7 @@ const Header = () => {
 								href="https://github.com/YHyoyeon"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-300"
+								className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors duration-300"
 							>
 								<Github size={16} />
 								<span>GitHub</span>

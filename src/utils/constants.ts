@@ -1,5 +1,6 @@
 /**
  * 프로젝트 전역 상수들
+ * @deprecated 이 파일은 유지보수를 위해 남겨두었습니다. 새로운 데이터는 src/data/resume.ts를 사용하세요.
  */
 
 export const PERSONAL_INFO = {

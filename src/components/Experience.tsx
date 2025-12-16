@@ -14,6 +14,7 @@ import {
 	getSoftnixDuration,
 	getTotalExperience,
 } from "../utils/dateUtils";
+import { CAREER } from "../data/resume";
 
 const Experience = () => {
 	const [ref, inView] = useInView({
@@ -29,12 +30,12 @@ const Experience = () => {
 
 	const experiences = [
 		{
-			company: "㈜소프트닉스",
-			position: "백엔드팀 사원/팀원",
+			company: CAREER.COMPANY,
+			position: "백엔드 개발자",
 			period: `재직중 (${softnixDuration})`,
 			location: "서울",
 			description:
-				"유저가 게임에서 생성한 NFT를 거래할 수 있는 NFT Marketplace와 백오피스 시스템을 NodeJs + typescript로 개발하고, 프로젝트의 인프라 구축을 담당하여 AWS 기반 클라우드 아키텍처 설계부터 CI/CD 파이프라인 구축까지 담당하고 있습니다.",
+				"Softnyx Portal 리마스터 프로젝트 전담 개발을 통해 AWS 기반 클라우드 인프라 구축, CI/CD 파이프라인 설계, 마이크로서비스 아키텍처 기반 인증 시스템 개발을 담당했습니다. 50개 이상의 PORTAL 이슈 개발 및 완료, 배포 시간 80% 단축 등 실질적인 성과를 만들어냈습니다.",
 			achievements: [
 				{
 					title: "NFT 마켓 API 개발",
@@ -202,7 +203,7 @@ const Experience = () => {
 	];
 
 	return (
-		<section id="experience" className="py-20 bg-gray-50">
+		<section id="experience" className="py-20 md:py-24 lg:py-28 bg-orange-50/30">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Career Summary */}
 				<motion.div
@@ -212,7 +213,7 @@ const Experience = () => {
 					className="my-24 relative"
 				>
 					{/* Simple gradient background */}
-					<div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 lg:p-12">
+					<div className="bg-orange-500 rounded-2xl p-8 lg:p-12">
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -235,7 +236,7 @@ const Experience = () => {
 								<div className="text-3xl lg:text-4xl font-bold text-white mb-2">
 									{totalExperience}
 								</div>
-								<div className="text-blue-100">총 경력</div>
+								<div className="text-yellow-100">총 경력</div>
 							</motion.div>
 
 							{/* Companies */}
@@ -248,7 +249,7 @@ const Experience = () => {
 								<div className="text-3xl lg:text-4xl font-bold text-white mb-2">
 									2개사
 								</div>
-								<div className="text-blue-100">근무 회사</div>
+								<div className="text-yellow-100">근무 회사</div>
 							</motion.div>
 
 							{/* Projects */}
@@ -261,7 +262,7 @@ const Experience = () => {
 								<div className="text-3xl lg:text-4xl font-bold text-white mb-2">
 									15+
 								</div>
-								<div className="text-blue-100">
+								<div className="text-yellow-100">
 									주요 프로젝트
 								</div>
 							</motion.div>
@@ -274,15 +275,19 @@ const Experience = () => {
 					initial={{ opacity: 0, y: 50 }}
 					animate={inView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.8 }}
-					className="text-center mb-16"
+					className="text-center mb-20"
 				>
-					<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-						Work Experience
+					<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+						<span className="text-orange-600">
+							Work Experience
+						</span>
 					</h2>
-					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+					<p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
 						{totalExperience}간 다양한 프로젝트를 통해 백엔드 개발
 						역량을 키워왔습니다.
-						<br />각 회사에서 담당한 주요 프로젝트와 성과를
+						<br className="hidden md:block" />
+						<span className="md:hidden"> </span>
+						각 회사에서 담당한 주요 프로젝트와 성과를
 						소개합니다.
 					</p>
 				</motion.div>
@@ -297,10 +302,10 @@ const Experience = () => {
 								duration: 0.8,
 								delay: expIndex * 0.2,
 							}}
-							className="bg-white rounded-2xl shadow-lg overflow-hidden"
+							className="bg-white rounded-3xl shadow-lg hover:shadow-2xl overflow-hidden border border-gray-100 transition-all duration-300"
 						>
 							{/* Company Header */}
-							<div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-white">
+							<div className="bg-orange-600 p-8 md:p-10 text-white">
 								<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 									<div>
 										<div className="flex items-center gap-3 mb-2">
@@ -309,10 +314,10 @@ const Experience = () => {
 												{exp.company}
 											</h3>
 										</div>
-										<p className="text-xl text-blue-100 mb-2">
+										<p className="text-xl text-yellow-100 mb-2">
 											{exp.position}
 										</p>
-										<div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-blue-200">
+										<div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-yellow-200">
 											<div className="flex items-center gap-2">
 												<Calendar className="w-4 h-4" />
 												<span>{exp.period}</span>
@@ -344,30 +349,31 @@ const Experience = () => {
 							</div>
 
 							{/* Company Content */}
-							<div className="p-8">
-								<p className="text-gray-700 text-lg leading-relaxed mb-8">
+							<div className="p-8 md:p-10">
+								<p className="text-gray-700 text-base md:text-lg leading-relaxed mb-10 max-w-4xl">
 									{exp.description}
 								</p>
 
 								{/* Achievements */}
-								<div className="mb-8">
-									<h4 className="text-xl font-bold text-gray-900 mb-6">
+								<div className="mb-10">
+									<h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+										<span className="w-1 h-6 bg-orange-500 rounded-full"></span>
 										주요 성과
 									</h4>
-									<div className="space-y-4">
+									<div className="grid md:grid-cols-2 gap-4">
 										{exp.achievements.map(
 											(achievement, achievementIndex) => (
 												<motion.div
 													key={achievement.title}
 													initial={{
 														opacity: 0,
-														x: -20,
+														y: 20,
 													}}
 													animate={
 														inView
 															? {
 																	opacity: 1,
-																	x: 0,
+																	y: 0,
 																}
 															: {}
 													}
@@ -376,13 +382,17 @@ const Experience = () => {
 														delay:
 															expIndex * 0.2 +
 															achievementIndex *
-																0.1,
+																0.05,
 													}}
-													className="flex gap-4 p-4 bg-gray-50 rounded-lg"
+													className="group flex gap-4 p-5 bg-gradient-to-br from-gray-50 to-orange-50/30 rounded-xl hover:shadow-md border border-gray-100 hover:border-orange-200 transition-all duration-300"
 												>
-													<achievement.icon className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-													<div>
-														<h5 className="font-semibold text-gray-900 mb-1">
+													<div className="flex-shrink-0">
+														<div className="p-2 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors duration-300">
+															<achievement.icon className="w-5 h-5 text-orange-600" />
+														</div>
+													</div>
+													<div className="flex-1 min-w-0">
+														<h5 className="font-semibold text-gray-900 mb-2 text-base">
 															{achievement.title}
 														</h5>
 														<p className="text-gray-600 text-sm leading-relaxed">
@@ -403,13 +413,14 @@ const Experience = () => {
 								>
 									{/* Technologies */}
 									<div>
-										<h4 className="text-xl font-bold text-gray-900 mb-6">
+										<h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+											<span className="w-1 h-6 bg-yellow-500 rounded-full"></span>
 											사용 기술
 										</h4>
-										<div className="grid grid-cols-2 gap-3">
+										<div className="flex flex-wrap gap-2.5">
 											{exp.technologies.map(
 												(tech, techIndex) => (
-													<motion.div
+													<motion.span
 														key={tech}
 														initial={{
 															opacity: 0,
@@ -428,22 +439,20 @@ const Experience = () => {
 															delay:
 																expIndex * 0.2 +
 																techIndex *
-																	0.05,
+																	0.03,
 														}}
-														className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg"
+														className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 text-orange-800 rounded-lg text-sm font-medium border border-yellow-200 hover:border-yellow-300 hover:shadow-sm transition-all duration-200"
 													>
-														<div className="w-2 h-2 bg-blue-600 rounded-full" />
-														<span className="text-gray-700 font-medium text-sm">
-															{tech}
-														</span>
-													</motion.div>
+														<div className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
+														{tech}
+													</motion.span>
 												)
 											)}
 										</div>
 									</div>
 
 									{/* Project Links - Only for Softnix */}
-									{exp.company === "㈜소프트닉스" && (
+									{exp.company === CAREER.COMPANY && (
 										<div>
 											<h4 className="text-xl font-bold text-gray-900 mb-6">
 												프로젝트 링크
@@ -453,9 +462,9 @@ const Experience = () => {
 													href="https://kingdomheroeswar.io/"
 													target="_blank"
 													rel="noreferrer noopener"
-													className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg hover:from-purple-100 hover:to-pink-100 transition-all duration-300 border border-purple-200 hover:border-purple-300"
+													className="flex items-center gap-3 p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-all duration-300 border border-orange-200 hover:border-orange-300"
 												>
-													<div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+													<div className="w-3 h-3 bg-orange-500 rounded-full"></div>
 													<div>
 														<div className="font-semibold text-gray-900">
 															마켓플레이스
@@ -466,7 +475,7 @@ const Experience = () => {
 													</div>
 													<div className="ml-auto">
 														<svg
-															className="w-5 h-5 text-purple-600"
+															className="w-5 h-5 text-orange-600"
 															fill="none"
 															stroke="currentColor"
 															viewBox="0 0 24 24"
@@ -484,9 +493,9 @@ const Experience = () => {
 													href="https://reboot.kingdom-story.com/"
 													target="_blank"
 													rel="noreferrer noopener"
-													className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 border border-blue-200 hover:border-blue-300"
+													className="flex items-center gap-3 p-4 bg-yellow-50 rounded-lg hover:bg-yellow-100 transition-all duration-300 border border-yellow-200 hover:border-yellow-300"
 												>
-													<div className="w-3 h-3 bg-green-500 rounded-full"></div>
+													<div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
 													<div>
 														<div className="font-semibold text-gray-900">
 															사전예약 페이지
@@ -497,7 +506,7 @@ const Experience = () => {
 													</div>
 													<div className="ml-auto">
 														<svg
-															className="w-5 h-5 text-blue-600"
+															className="w-5 h-5 text-yellow-600"
 															fill="none"
 															stroke="currentColor"
 															viewBox="0 0 24 24"

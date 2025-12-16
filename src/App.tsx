@@ -6,7 +6,9 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Introduction from "./components/Introduction";
 import NavigationButtons from "./components/NavigationButtons";
+import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Troubleshooting from "./components/Troubleshooting";
 
 function App() {
 	const [scrollProgress, setScrollProgress] = useState(0);
@@ -25,12 +27,14 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+		<div className="App min-h-screen bg-orange-50">
 			<Header />
-			<main>
+			<main className="relative">
 				<Introduction scrollProgress={scrollProgress} />
 				<Experience />
+				<Projects />
 				<Skills />
+				<Troubleshooting />
 				<Contact />
 			</main>
 			<Footer />

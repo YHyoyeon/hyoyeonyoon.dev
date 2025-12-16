@@ -7,7 +7,7 @@ import {
 	Server,
 	Github,
 } from "lucide-react";
-import { PERSONAL_INFO } from "../utils/constants";
+import { PERSONAL_INFO } from "../data/resume";
 
 interface HeroProps {
 	scrollProgress: number;
@@ -27,11 +27,10 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 	return (
 		<section
 			id="hero"
-			className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden"
+			className="relative min-h-screen flex items-center justify-center bg-orange-600 overflow-hidden"
 		>
 			{/* Animated Background */}
 			<div className="absolute inset-0">
-				<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),transparent_50%)]" />
 				<div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221.5%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
 			</div>
 
@@ -43,7 +42,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				className="absolute top-20 left-10 text-purple-400/30"
+				className="absolute top-20 left-10 text-yellow-400/30"
 			>
 				<Code size={40} />
 			</motion.div>
@@ -54,7 +53,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				className="absolute top-40 right-20 text-blue-400/30"
+				className="absolute top-40 right-20 text-yellow-300/30"
 			>
 				<Server size={40} />
 			</motion.div>
@@ -65,15 +64,15 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
 				}}
-				className="absolute bottom-40 left-20 text-indigo-400/30"
+				className="absolute bottom-40 left-20 text-orange-400/30"
 			>
 				<Database size={40} />
 			</motion.div>
 
 			{/* Scroll Progress Bar */}
-			<div className="fixed top-0 left-0 w-full h-1 bg-slate-800 z-50">
+							<div className="fixed top-0 left-0 w-full h-1 bg-orange-800 z-50">
 				<motion.div
-					className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-600"
+					className="h-full bg-yellow-400"
 					style={{ width: `${scrollProgress * 100}%` }}
 				/>
 			</div>
@@ -91,9 +90,9 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.2, duration: 0.6 }}
-							className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-6"
+							className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 border border-yellow-400/30 rounded-full text-yellow-200 text-sm font-medium mb-6"
 						>
-							<span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
+							<span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
 							백엔드 개발자
 						</motion.div>
 
@@ -105,7 +104,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 						>
 							안녕하세요,
 							<br />
-							<span className="bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+							<span className="text-yellow-300">
 								윤효연
 							</span>
 							입니다
@@ -115,15 +114,20 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.4, duration: 0.6 }}
-							className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
+							className="text-lg md:text-xl text-slate-200 leading-relaxed mb-10 max-w-2xl space-y-4"
 						>
-							4년 차 백엔드 개발자로 TypeScript와 Node.js를
-							주력으로 하며, NFT Marketplace와 백오피스 시스템,
-							PORTAL 사이트 리뉴얼 프로젝트의 인프라 구축을
-							담당하여 백엔드, 인프라, DevOps, 프론트까지 폭넓게
-							경험했습니다. 특히 최근 2년간은 AWS 기반 클라우드
-							아키텍처 설계부터 CI/CD 파이프라인 구축을 담당하여
-							사이트 구축부터 런칭까지 단독 진행이 가능합니다.
+							<span className="block">
+								{PERSONAL_INFO.SPECIALTY}를 전문으로 하는 백엔드 개발자입니다.
+							</span>
+							<span className="block text-slate-300">
+								Softnyx Portal 리마스터 프로젝트 전담 개발을 통해 AWS 기반 클라우드 인프라 구축,
+								CI/CD 파이프라인 설계, 마이크로서비스 아키텍처 기반 인증 시스템 개발 등
+								백엔드부터 인프라, DevOps까지 폭넓게 경험했습니다.
+							</span>
+							<span className="block text-slate-200 font-medium">
+								특히 배포 시간 80% 단축, 50개 이상의 PORTAL 이슈 개발 및 완료 등
+								실질적인 성과를 만들어냈습니다.
+							</span>
 						</motion.p>
 
 						{/* Contact Buttons */}
@@ -131,28 +135,28 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.5, duration: 0.6 }}
-							className="flex flex-col items-center gap-4 mb-8"
+							className="flex flex-col items-center lg:items-start gap-4 mb-8"
 						>
 							<button
 								onClick={() => handleContact("email")}
-								className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+								className="group flex items-center gap-3 px-8 py-4 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/50 hover:scale-105 active:scale-100"
 							>
-								<Mail size={20} />
+								<Mail size={20} className="group-hover:animate-bounce" />
 								{PERSONAL_INFO.EMAIL}
 							</button>
-							<div className="flex flex-col sm:flex-row items-center gap-4">
+							<div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
 								<button
 									onClick={() => handleContact("blog")}
-									className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
+									className="group flex items-center gap-3 px-8 py-4 border-2 border-orange-400/50 text-orange-100 font-semibold rounded-xl hover:border-yellow-400 hover:text-yellow-300 hover:bg-yellow-500/10 transition-all duration-300 backdrop-blur-sm"
 								>
-									<ExternalLink size={20} />
+									<ExternalLink size={20} className="group-hover:rotate-45 transition-transform duration-300" />
 									블로그 보기
 								</button>
 								<button
 									onClick={() => handleContact("github")}
-									className="flex items-center gap-3 px-8 py-4 border-2 border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-purple-500 hover:text-purple-300 transition-all duration-300"
+									className="group flex items-center gap-3 px-8 py-4 border-2 border-orange-400/50 text-orange-100 font-semibold rounded-xl hover:border-yellow-400 hover:text-yellow-300 hover:bg-yellow-500/10 transition-all duration-300 backdrop-blur-sm"
 								>
-									<Github size={20} />
+									<Github size={20} className="group-hover:scale-110 transition-transform duration-300" />
 									GitHub
 								</button>
 							</div>
@@ -185,8 +189,8 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							className="relative"
 						>
 							{/* Main Profile Circle */}
-							<div className="w-80 h-80 bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
-								<div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-blue-400/20" />
+							<div className="w-80 h-80 bg-yellow-500 rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
+								<div className="absolute inset-0 bg-yellow-400/20" />
 								<span className="text-8xl font-bold text-white relative z-10">
 									YHY
 								</span>
@@ -204,7 +208,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 									<div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-yellow-400 rounded-full" />
 									<div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-green-400 rounded-full" />
 									<div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-400 rounded-full" />
-									<div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full" />
+									<div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full" />
 								</motion.div>
 							</div>
 
@@ -220,7 +224,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 								}}
 								className="absolute -top-8 left-1/2 transform -translate-x-1/2"
 							>
-								<div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-blue-400/30">
+								<div className="bg-orange-500 text-white px-4 py-2 rounded-full shadow-xl border-2 border-orange-400/30">
 									<span className="text-sm font-bold">
 										TypeScript
 									</span>
@@ -238,7 +242,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 								}}
 								className="absolute -bottom-8 left-1/2 transform -translate-x-1/2"
 							>
-								<div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-green-400/30">
+								<div className="bg-yellow-500 text-white px-4 py-2 rounded-full shadow-xl border-2 border-yellow-400/30">
 									<span className="text-sm font-bold">
 										Node.js
 									</span>
@@ -256,7 +260,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 								}}
 								className="absolute top-1/2 -right-8 transform -translate-y-1/2"
 							>
-								<div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-orange-400/30">
+								<div className="bg-orange-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-orange-500/30">
 									<span className="text-sm font-bold">
 										AWS
 									</span>
@@ -274,7 +278,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 								}}
 								className="absolute top-1/2 -left-8 transform -translate-y-1/2"
 							>
-								<div className="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-cyan-400/30">
+								<div className="bg-yellow-600 text-white px-4 py-2 rounded-full shadow-xl border-2 border-yellow-500/30">
 									<span className="text-sm font-bold">
 										MySQL
 									</span>

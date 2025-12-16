@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Globe, Mail, Send, User } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import { PERSONAL_INFO } from "../utils/constants";
+import { PERSONAL_INFO } from "../data/resume";
 
 const Contact = () => {
 	const [ref, inView] = useInView({
@@ -18,8 +18,8 @@ const Contact = () => {
 				window.location.href = `mailto:${PERSONAL_INFO.EMAIL}`;
 			},
 			description: "업무 문의 및 협업 제안",
-			color: "from-blue-500 to-cyan-500",
-			bgColor: "from-blue-50 to-cyan-50",
+			color: "bg-yellow-500",
+			bgColor: "bg-yellow-50",
 		},
 	];
 
@@ -40,7 +40,7 @@ const Contact = () => {
 	return (
 		<section
 			id="contact"
-			className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden"
+			className="py-20 md:py-24 lg:py-28 bg-orange-700 relative overflow-hidden"
 		>
 			{/* Background Pattern */}
 			<div className="absolute inset-0 opacity-5">
@@ -48,8 +48,8 @@ const Contact = () => {
 			</div>
 
 			{/* Floating Elements */}
-			<div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl" />
-			<div className="absolute bottom-20 right-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-xl" />
+			<div className="absolute top-20 left-10 w-20 h-20 bg-yellow-500/10 rounded-full blur-xl" />
+			<div className="absolute bottom-20 right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl" />
 			<div className="absolute top-1/2 left-1/4 w-16 h-16 bg-cyan-500/10 rounded-full blur-lg" />
 
 			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -58,21 +58,23 @@ const Contact = () => {
 					initial={{ opacity: 0, y: 50 }}
 					animate={inView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.8 }}
-					className="text-center mb-20"
+					className="text-center mb-16 md:mb-20"
 				>
 					<motion.div
 						initial={{ scale: 0 }}
 						animate={inView ? { scale: 1 } : {}}
 						transition={{ delay: 0.2, duration: 0.6 }}
-						className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6"
+						className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-yellow-500 rounded-2xl mb-6 shadow-xl"
 					>
-						<User className="w-8 h-8 text-white" />
+						<User className="w-8 h-8 md:w-10 md:h-10 text-white" />
 					</motion.div>
-					<h2 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-blue-100 to-indigo-100 bg-clip-text text-transparent">
-						Contact Me
+					<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+						<span className="text-yellow-300">
+							Contact Me
+						</span>
 					</h2>
-					<p className="text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed">
-					개발 관련 이야기나 기술적인 질문이 있으시면 연락주세요
+					<p className="text-lg md:text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed">
+						개발 관련 이야기나 기술적인 질문이 있으시면 연락주세요
 					</p>
 				</motion.div>
 
@@ -96,31 +98,31 @@ const Contact = () => {
 								className="group relative"
 							>
 								<div
-									className={`bg-gradient-to-br ${info.bgColor} backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10`}
+									className={`${info.bgColor} backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 border border-orange-200 hover:border-orange-300 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/20`}
 								>
-									<div className="flex items-start gap-6">
+									<div className="flex flex-col md:flex-row items-start gap-6">
 										<div
-											className={`p-4 bg-gradient-to-r ${info.color} rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+											className={`p-4 ${info.color} rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
 										>
-											<info.icon className="w-6 h-6 text-white" />
+											<info.icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
 										</div>
-										<div className="flex-1">
-											<h3 className="text-xl font-bold text-gray-900 mb-2">
+										<div className="flex-1 w-full">
+											<h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
 												{info.title}
 											</h3>
-											<p className="text-gray-700 text-lg font-medium mb-2">
+											<p className="text-gray-700 text-base md:text-lg font-medium mb-2 break-all">
 												{info.value}
 											</p>
-											<p className="text-gray-600 text-sm">
+											<p className="text-gray-600 text-sm md:text-base mb-4">
 												{info.description}
 											</p>
 											{info.title === "이메일" && (
-												<div className="mt-4 flex justify-center">
+												<div className="flex justify-center md:justify-start">
 													<button
 														onClick={info.action}
-														className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+														className="group inline-flex items-center gap-2 px-6 py-3 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-100"
 													>
-														<Send size={16} />
+														<Send size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
 														연락하기
 													</button>
 												</div>
