@@ -16,7 +16,11 @@ import {
 } from "../utils/dateUtils";
 import { CAREER } from "../data/resume";
 
+import { useLanguage } from "../context/LanguageContext";
+
 const Experience = () => {
+	const { language } = useLanguage();
+	// ... rest of component
 	const [ref, inView] = useInView({
 		triggerOnce: true,
 		threshold: 0.1,
@@ -257,7 +261,7 @@ const Experience = () => {
 				<div className="space-y-12">
 					{experiences.map((exp, expIndex) => (
 						<motion.div
-							key={exp.company}
+							key={typeof exp.company === 'string' ? exp.company : exp.company[language]}
 							initial={{ opacity: 0, y: 50 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
 							transition={{
@@ -273,7 +277,7 @@ const Experience = () => {
 										<div className="flex items-center gap-3 mb-2">
 											<Building2 className="w-6 h-6" />
 											<h3 className="text-2xl font-bold">
-												{exp.company}
+												{typeof exp.company === 'string' ? exp.company : exp.company[language]}
 											</h3>
 										</div>
 										<p className="text-xl text-yellow-100 mb-2">

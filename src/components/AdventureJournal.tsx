@@ -7,10 +7,10 @@ const AdventureJournal = () => {
 	const t = TRANSLATIONS[language];
 
 	return (
-		<div className="h-full max-w-4xl mx-auto">
-			<h2 className="text-2xl text-terra-gold mb-6 flex items-center gap-3">
+		<div className="h-full max-w-4xl mx-auto pb-20">
+			<h2 className="text-2xl text-black mb-6 flex items-center gap-3">
 				{t.journal.title}{" "}
-				<span className="text-sm text-gray-400 font-normal">
+				<span className="text-sm text-black font-normal">
 					{t.journal.subtitle}
 				</span>
 			</h2>

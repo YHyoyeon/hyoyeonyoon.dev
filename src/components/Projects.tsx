@@ -10,7 +10,10 @@ import {
 import { useInView } from "react-intersection-observer";
 import { PROJECTS } from "../data/projects";
 
+import { useLanguage } from "../context/LanguageContext";
+
 const Projects = () => {
+	const { language } = useLanguage();
 	const [ref, inView] = useInView({
 		triggerOnce: true,
 		threshold: 0.1,
@@ -53,7 +56,7 @@ const Projects = () => {
 								<div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 									<div className="flex-1">
 										<h3 className="text-2xl md:text-3xl font-bold mb-3">
-											{project.title}
+											{project.title[language]}
 										</h3>
 										<div className="flex items-center gap-4 text-yellow-100">
 											<div className="flex items-center gap-2">
@@ -76,7 +79,7 @@ const Projects = () => {
 										프로젝트 개요
 									</h4>
 									<p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-4xl">
-										{project.overview}
+										{project.overview[language]}
 									</p>
 								</div>
 
@@ -104,7 +107,7 @@ const Projects = () => {
 											>
 												<CheckCircle2 className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
 												<p className="text-gray-700 leading-relaxed text-sm md:text-base">
-													{achievement}
+													{typeof achievement === 'string' ? achievement : achievement[language]}
 												</p>
 											</motion.div>
 										))}
@@ -120,11 +123,11 @@ const Projects = () => {
 										</h4>
 										<div className="flex flex-wrap gap-3">
 											{project.highlights.map((highlight, highlightIndex) => (
-											<span
-												key={highlightIndex}
-												className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium border border-orange-200"
-											>
-													{highlight}
+												<span
+													key={highlightIndex}
+													className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium border border-orange-200"
+												>
+													{typeof highlight === 'string' ? highlight : highlight[language]}
 												</span>
 											))}
 										</div>

@@ -167,4 +167,31 @@
 	.gradient-text {
 		@apply text-orange-600;
 	}
+
+    /* Parallax Animations */
+    @keyframes parallax-scroll {
+        from { background-position: 0 0; }
+        to { background-position: -100% 0; }
+    }
+
+    .animate-parallax-slow {
+        animation: parallax-scroll 60s linear infinite;
+    }
+
+    .animate-parallax-medium {
+        animation: parallax-scroll 30s linear infinite;
+    }
+
+    .animate-parallax-fast {
+        animation: parallax-scroll 10s linear infinite;
+    }
+    
+    @keyframes bounce-pixel {
+        0%, 100% { transform: translate(-50%, 0); }
+        50% { transform: translate(-50%, -4px); }
+    }
+    
+    .animate-bounce-pixel {
+        animation: bounce-pixel 0.8s steps(2) infinite;
+    }
 }

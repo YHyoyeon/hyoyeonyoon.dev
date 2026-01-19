@@ -13,18 +13,18 @@ const Status = () => {
 			<div className="pixel-panel pixel-border p-6 w-full md:w-1/3 flex flex-col items-center gap-6">
 				<div className="w-48 h-48 bg-black border-4 border-terra-border relative group overflow-hidden">
 					<div className="absolute inset-0 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform cursor-pointer">
-						🧙‍♂️
+						🐱
 					</div>
-					<div className="absolute bottom-0 w-full bg-black/70 text-center text-xs py-1 text-terra-gold">
+					<div className="absolute bottom-0 w-full bg-black/70 text-center text-xs py-1 text-terra-gold whitespace-nowrap overflow-hidden text-ellipsis px-1">
 						{PERSONAL_INFO.NAME[language]} (Backend)
 					</div>
 				</div>
 
 				<div className="w-full space-y-2">
-					<StatRow label="STR (Engineering)" value={98} />
-					<StatRow label="DEX (DevOps)" value={95} />
-					<StatRow label="INT (Architecture)" value={97} />
-					<StatRow label="WIS (Leadership)" value={90} />
+					<StatRow label="Engineering" value={98} />
+					<StatRow label="DevOps" value={95} />
+					<StatRow label="Architecture" value={97} />
+					<StatRow label="Leadership" value={90} />
 				</div>
 			</div>
 
@@ -52,10 +52,10 @@ const Status = () => {
 							{t.status.specialBuffs}
 						</h3>
 						<ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-							<BuffItem icon="⚡" text={t.status.buffs.speed} />
-							<BuffItem icon="🧱" text={t.status.buffs.stability} />
-							<BuffItem icon="🧩" text={t.status.buffs.architecture} />
-							<BuffItem icon="🌐" text={t.status.buffs.global} />
+							<BuffItem icon="✨" text={t.status.buffs.speed} />
+							<BuffItem icon="💎" text={t.status.buffs.stability} />
+							<BuffItem icon="🧶" text={t.status.buffs.architecture} />
+							<BuffItem icon="🪐" text={t.status.buffs.global} />
 						</ul>
 					</div>
 				</div>

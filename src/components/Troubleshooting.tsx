@@ -9,7 +9,10 @@ import {
 import { useInView } from "react-intersection-observer";
 import { TROUBLESHOOTING_CASES } from "../data/troubleshooting";
 
+import { useLanguage } from "../context/LanguageContext";
+
 const Troubleshooting = () => {
+	const { language } = useLanguage();
 	const [ref, inView] = useInView({
 		triggerOnce: true,
 		threshold: 0.1,
@@ -51,7 +54,7 @@ const Troubleshooting = () => {
 									<div className="flex-1">
 										<div className="flex items-center gap-3 mb-2">
 											<AlertCircle className="w-6 h-6" />
-											<h3 className="text-2xl font-bold">{case_.title}</h3>
+											<h3 className="text-2xl font-bold">{case_.title[language]}</h3>
 										</div>
 										<div className="flex items-center gap-2 text-orange-100">
 											<Calendar className="w-4 h-4" />
@@ -70,7 +73,7 @@ const Troubleshooting = () => {
 										문제 상황
 									</h4>
 									<div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
-										<p className="text-gray-800 leading-relaxed">{case_.problem}</p>
+										<p className="text-gray-800 leading-relaxed">{case_.problem[language]}</p>
 									</div>
 								</div>
 
@@ -81,7 +84,7 @@ const Troubleshooting = () => {
 										해결 방법
 									</h4>
 									<div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-										<p className="text-gray-800 leading-relaxed">{case_.solution}</p>
+										<p className="text-gray-800 leading-relaxed">{case_.solution[language]}</p>
 									</div>
 								</div>
 
@@ -99,7 +102,7 @@ const Troubleshooting = () => {
 													className="bg-orange-50 border-l-4 border-orange-500 p-3 rounded-r-lg"
 												>
 													<p className="text-gray-800 text-sm leading-relaxed">
-														{detail}
+														{typeof detail === 'string' ? detail : detail[language]}
 													</p>
 												</div>
 											))}
@@ -115,7 +118,7 @@ const Troubleshooting = () => {
 									</h4>
 									<div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
 										<p className="text-gray-800 leading-relaxed font-medium">
-											{case_.result}
+											{case_.result[language]}
 										</p>
 									</div>
 								</div>

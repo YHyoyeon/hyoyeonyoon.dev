@@ -11,7 +11,10 @@ import {
 import { useInView } from "react-intersection-observer";
 import { TECHNOLOGY_CATEGORIES } from "../data/technologies";
 
+import { useLanguage } from "../context/LanguageContext";
+
 const Skills = () => {
+	const { language } = useLanguage();
 	const [ref, inView] = useInView({
 		triggerOnce: true,
 		threshold: 0.1,
@@ -62,7 +65,7 @@ const Skills = () => {
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 					{skillCategories.map((category, categoryIndex) => (
 						<motion.div
-							key={category.title}
+							key={category.title[language]}
 							initial={{ opacity: 0, y: 30 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
 							transition={{
@@ -75,20 +78,19 @@ const Skills = () => {
 								{/* Category Header */}
 								<div className="flex items-center gap-4 mb-6 relative z-10">
 									<div
-										className={`p-3 md:p-4 rounded-2xl shadow-xl group-hover:scale-110 transition-all duration-300 group-hover:shadow-2xl ${
-											category.color === "blue" || category.color === "purple" || category.color === "pink"
-												? "bg-orange-500"
-												: category.color === "green" || category.color === "indigo" || category.color === "cyan"
-													? "bg-yellow-500"
-													: category.color === "orange"
-														? "bg-orange-600"
-														: "bg-orange-500"
-										}`}
+										className={`p-3 md:p-4 rounded-2xl shadow-xl group-hover:scale-110 transition-all duration-300 group-hover:shadow-2xl ${category.color === "blue" || category.color === "purple" || category.color === "pink"
+											? "bg-orange-500"
+											: category.color === "green" || category.color === "indigo" || category.color === "cyan"
+												? "bg-yellow-500"
+												: category.color === "orange"
+													? "bg-orange-600"
+													: "bg-orange-500"
+											}`}
 									>
 										<category.icon className="w-7 h-7 text-white" />
 									</div>
 									<h3 className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">
-										{category.title}
+										{category.title[language]}
 									</h3>
 								</div>
 
@@ -105,9 +107,9 @@ const Skills = () => {
 												animate={
 													inView
 														? {
-																opacity: 1,
-																scale: 1,
-															}
+															opacity: 1,
+															scale: 1,
+														}
 														: {}
 												}
 												transition={{
@@ -116,15 +118,14 @@ const Skills = () => {
 														categoryIndex * 0.1 +
 														skillIndex * 0.05,
 												}}
-												className={`group/skill relative overflow-hidden rounded-lg md:rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer ${
-													category.color === "blue" || category.color === "purple" || category.color === "pink"
-														? "bg-orange-50 hover:bg-orange-100"
-														: category.color === "green" || category.color === "indigo" || category.color === "cyan"
-															? "bg-yellow-50 hover:bg-yellow-100"
-															: category.color === "orange"
-																? "bg-orange-50 hover:bg-orange-100"
-																: "bg-orange-50 hover:bg-orange-100"
-												}`}
+												className={`group/skill relative overflow-hidden rounded-lg md:rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer ${category.color === "blue" || category.color === "purple" || category.color === "pink"
+													? "bg-orange-50 hover:bg-orange-100"
+													: category.color === "green" || category.color === "indigo" || category.color === "cyan"
+														? "bg-yellow-50 hover:bg-yellow-100"
+														: category.color === "orange"
+															? "bg-orange-50 hover:bg-orange-100"
+															: "bg-orange-50 hover:bg-orange-100"
+													}`}
 											>
 												<span className="text-sm font-semibold text-gray-700 relative z-10 group-hover/skill:text-gray-900 transition-colors duration-300">
 													{skill.name}

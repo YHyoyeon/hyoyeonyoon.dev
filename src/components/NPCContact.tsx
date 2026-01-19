@@ -14,7 +14,7 @@ const NPCContact = () => {
 						<div className="shrink-0 flex flex-col items-center">
 							<div className="w-32 h-32 bg-black border-2 border-white mb-2 overflow-hidden relative">
 								<div className="absolute inset-0 flex items-center justify-center text-6xl animate-bounce">
-									🧙‍♂️
+									🐱
 								</div>
 							</div>
 							<div className="bg-black text-white text-xs px-2 py-1 border border-white">
@@ -51,13 +51,7 @@ const NPCContact = () => {
 									</span>
 									{t.buttons.github}
 								</a>
-								<button
-									type="button"
-									className="block w-full bg-black/50 hover:bg-gray-700 border-2 border-gray-500 hover:border-gray-400 p-3 text-left transition-colors text-gray-400"
-								>
-									<span className="mr-2">▶</span>
-									{t.buttons.leave}
-								</button>
+
 							</div>
 						</div>
 					</div>
