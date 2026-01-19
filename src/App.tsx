@@ -4,11 +4,15 @@ import Inventory from "./components/Inventory";
 import NPCContact from "./components/NPCContact";
 import QuestLog from "./components/QuestLog";
 import Status from "./components/Status";
+import { useLanguage } from "./context/LanguageContext";
+import { TRANSLATIONS } from "./data/translations";
 
 type TabKey = "status" | "quest" | "inventory" | "journal" | "contact";
 
 function App() {
 	const [activeTab, setActiveTab] = useState<TabKey>("status");
+	const { language, toggleLanguage } = useLanguage();
+	const t = TRANSLATIONS[language];
 
 	const handleTabChange = (tab: TabKey) => {
 		setActiveTab(tab);
@@ -23,29 +27,38 @@ function App() {
 					</div>
 					<div>
 						<h1 className="text-xl text-terra-gold drop-shadow-md">
-							Yoon HyoYeon
+							{t.status.name}
 						</h1>
 						<div className="text-xs text-gray-400">
-							Lv.25 Backend Dev
+							{t.header.job}
 						</div>
 					</div>
 				</div>
 
-				<div className="flex flex-col gap-2 w-64 md:w-96 font-sans text-xs font-bold tracking-wider">
-					<div className="relative h-5 bg-black/40 border-2 border-terra-border rounded">
-						<div className="absolute top-0 left-0 h-full bg-terra-red w-[90%] flex items-center justify-center text-white">
-							<span className="drop-shadow-md z-10">
-								HP 2025/2025
-							</span>
+				<div className="flex items-center gap-4">
+					<div className="flex flex-col gap-2 w-48 md:w-64 font-sans text-xs font-bold tracking-wider hidden sm:flex">
+						<div className="relative h-5 bg-black/40 border-2 border-terra-border rounded">
+							<div className="absolute top-0 left-0 h-full bg-terra-red w-[90%] flex items-center justify-center text-white">
+								<span className="drop-shadow-md z-10">
+									{t.header.hp}
+								</span>
+							</div>
+						</div>
+						<div className="relative h-5 bg-black/40 border-2 border-terra-border rounded">
+							<div className="absolute top-0 left-0 h-full bg-terra-blue w-[100%] flex items-center justify-center text-white">
+								<span className="drop-shadow-md z-10">
+									{t.header.mp}
+								</span>
+							</div>
 						</div>
 					</div>
-					<div className="relative h-5 bg-black/40 border-2 border-terra-border rounded">
-						<div className="absolute top-0 left-0 h-full bg-terra-blue w-[100%] flex items-center justify-center text-white">
-							<span className="drop-shadow-md z-10">
-								MP (Caffeine) ∞
-							</span>
-						</div>
-					</div>
+
+					<button
+						onClick={toggleLanguage}
+						className="bg-terra-item border-2 border-terra-border hover:border-terra-gold px-3 py-1 text-xs font-bold transition-colors w-16"
+					>
+						{language === "ko" ? "EN" : "한글"}
+					</button>
 				</div>
 			</header>
 
@@ -53,31 +66,31 @@ function App() {
 				<nav className="w-20 md:w-24 bg-terra-panel border-r-4 border-terra-border flex flex-col items-center py-4 gap-4 shrink-0 z-10">
 					<TabButton
 						icon="📜"
-						label="Status"
+						label={t.nav.status}
 						active={activeTab === "status"}
 						onClick={() => handleTabChange("status")}
 					/>
 					<TabButton
 						icon="⚔️"
-						label="Quest"
+						label={t.nav.quest}
 						active={activeTab === "quest"}
 						onClick={() => handleTabChange("quest")}
 					/>
 					<TabButton
 						icon="🎒"
-						label="Inven"
+						label={t.nav.inventory}
 						active={activeTab === "inventory"}
 						onClick={() => handleTabChange("inventory")}
 					/>
 					<TabButton
 						icon="📖"
-						label="Log"
+						label={t.nav.journal}
 						active={activeTab === "journal"}
 						onClick={() => handleTabChange("journal")}
 					/>
 					<TabButton
 						icon="💬"
-						label="Talk"
+						label={t.nav.contact}
 						active={activeTab === "contact"}
 						onClick={() => handleTabChange("contact")}
 					/>
@@ -111,10 +124,9 @@ function TabButton({ icon, label, active, onClick }: TabButtonProps) {
 		<button
 			onClick={onClick}
 			className={`w-16 h-16 flex flex-col items-center justify-center border-4 transition-all pixel-btn
-				${
-					active
-						? "bg-terra-panel border-terra-gold translate-x-1 scale-105 shadow-[0_0_10px_#f4d03f]"
-						: "bg-terra-item border-terra-border hover:bg-terra-dirt hover:border-terra-gold opacity-80 hover:opacity-100"
+				${active
+					? "bg-terra-panel border-terra-gold translate-x-1 scale-105 shadow-[0_0_10px_#f4d03f]"
+					: "bg-terra-item border-terra-border hover:bg-terra-dirt hover:border-terra-gold opacity-80 hover:opacity-100"
 				}`}
 		>
 			<span className="text-2xl mb-1">{icon}</span>

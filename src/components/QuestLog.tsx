@@ -1,14 +1,21 @@
+import { useLanguage } from "../context/LanguageContext";
 import { PROJECTS } from "../data/projects";
 import { CAREER, PERSONAL_INFO, QUANTITATIVE_ACHIEVEMENTS } from "../data/resume";
-
-const CAREER_QUESTS = [
-	`PORTAL 이슈 개발 및 완료: ${QUANTITATIVE_ACHIEVEMENTS.PORTAL_ISSUES}`,
-	`개발한 RESTful API: ${QUANTITATIVE_ACHIEVEMENTS.API_DEVELOPED}`,
-	`배포 시간 단축: ${QUANTITATIVE_ACHIEVEMENTS.DEPLOYMENT_TIME_REDUCTION}`,
-	`CI/CD 파이프라인 구축: ${QUANTITATIVE_ACHIEVEMENTS.CI_CD_PIPELINES}`,
-] as const;
+import { TRANSLATIONS } from "../data/translations";
 
 const QuestLog = () => {
+	const { language } = useLanguage();
+	const t = TRANSLATIONS[language];
+
+	console.log("QuestLog Render", { language, projects: PROJECTS });
+
+	const careerQuests = [
+		`${t.quest.career.portal}: ${QUANTITATIVE_ACHIEVEMENTS.PORTAL_ISSUES[language]}`,
+		`${t.quest.career.api}: ${QUANTITATIVE_ACHIEVEMENTS.API_DEVELOPED[language]}`,
+		`${t.quest.career.deploy}: ${QUANTITATIVE_ACHIEVEMENTS.DEPLOYMENT_TIME_REDUCTION[language]}`,
+		`${t.quest.career.cicd}: ${QUANTITATIVE_ACHIEVEMENTS.CI_CD_PIPELINES[language]}`,
+	];
+
 	return (
 		<div className="h-full flex flex-col gap-4">
 			<h2 className="text-3xl text-terra-gold text-center mb-4 drop-shadow-[2px_2px_0_#000]">
@@ -21,13 +28,13 @@ const QuestLog = () => {
 						MAIN QUEST
 					</div>
 					<h3 className="text-xl text-terra-gold mb-2 mt-2">
-						{CAREER.COMPANY} - {CAREER.POSITION}
+						{CAREER.COMPANY[language]} - {CAREER.POSITION[language]}
 					</h3>
 					<p className="text-gray-400 text-sm mb-4">
-						{PERSONAL_INFO.EXPERIENCE}
+						{PERSONAL_INFO.EXPERIENCE[language]}
 					</p>
 					<ul className="space-y-2 text-sm text-gray-200">
-						{CAREER_QUESTS.map((ach) => (
+						{careerQuests.map((ach) => (
 							<li key={ach} className="flex items-start gap-2">
 								<span className="text-terra-gold mt-1">✓</span>
 								{ach}
@@ -44,7 +51,7 @@ const QuestLog = () => {
 						<div className="flex justify-between items-start mb-4 gap-4">
 							<div>
 								<h3 className="text-lg text-terra-blue group-hover:text-terra-gold transition-colors">
-									! {project.title}
+									! {project.title[language]}
 								</h3>
 								<p className="text-xs text-gray-500 mt-1">
 									{project.period}
@@ -56,7 +63,7 @@ const QuestLog = () => {
 						</div>
 
 						<div className="bg-black/40 p-4 border border-gray-700 mb-4 text-sm text-gray-300 leading-relaxed">
-							{project.overview}
+							{project.overview[language]}
 						</div>
 
 						<div className="mb-4">
@@ -80,9 +87,14 @@ const QuestLog = () => {
 								Achievements:
 							</h4>
 							<ul className="list-disc list-inside text-xs text-gray-300 space-y-1">
-								{project.achievements.map((outcome) => (
-									<li key={outcome}>{outcome}</li>
-								))}
+								{project.achievements.map((outcome, idx) => {
+									const text = typeof outcome === 'string' ? outcome : outcome[language];
+									return (
+										<li key={idx}>
+											{text}
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 					</div>

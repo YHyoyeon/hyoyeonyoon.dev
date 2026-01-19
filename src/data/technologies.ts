@@ -4,7 +4,10 @@
  */
 
 export interface TechnologyCategory {
-  title: string;
+  title: {
+    ko: string;
+    en: string;
+  };
   icon: string;
   color: string;
   skills: string[];
@@ -12,7 +15,10 @@ export interface TechnologyCategory {
 
 export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
   {
-    title: "Backend Development",
+    title: {
+      ko: "Backend Development",
+      en: "Backend Development",
+    },
     icon: "Server",
     color: "blue",
     skills: [
@@ -23,7 +29,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Database & Cache",
+    title: {
+      ko: "Database & Cache",
+      en: "Database & Cache",
+    },
     icon: "Database",
     color: "green",
     skills: [
@@ -34,7 +43,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Infrastructure & DevOps",
+    title: {
+      ko: "Infrastructure & DevOps",
+      en: "Infrastructure & DevOps",
+    },
     icon: "Cloud",
     color: "orange",
     skills: [
@@ -47,7 +59,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Authentication & Security",
+    title: {
+      ko: "Authentication & Security",
+      en: "Authentication & Security",
+    },
     icon: "Shield",
     color: "purple",
     skills: [
@@ -58,7 +73,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Validation & Testing",
+    title: {
+      ko: "Validation & Testing",
+      en: "Validation & Testing",
+    },
     icon: "Zap",
     color: "indigo",
     skills: [
@@ -70,7 +88,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Monitoring & Logging",
+    title: {
+      ko: "Monitoring & Logging",
+      en: "Monitoring & Logging",
+    },
     icon: "Settings",
     color: "pink",
     skills: [
@@ -82,7 +103,10 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Frontend & Tools",
+    title: {
+      ko: "Frontend & Tools",
+      en: "Frontend & Tools",
+    },
     icon: "Code",
     color: "cyan",
     skills: [

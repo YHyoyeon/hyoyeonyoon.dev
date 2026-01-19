@@ -1,6 +1,11 @@
+import { useLanguage } from "../context/LanguageContext";
 import { PERSONAL_INFO } from "../data/resume";
+import { TRANSLATIONS } from "../data/translations";
 
 const NPCContact = () => {
+	const { language } = useLanguage();
+	const t = TRANSLATIONS[language];
+
 	return (
 		<div className="h-full flex items-center justify-center pb-20">
 			<div className="w-full max-w-3xl">
@@ -13,16 +18,16 @@ const NPCContact = () => {
 								</div>
 							</div>
 							<div className="bg-black text-white text-xs px-2 py-1 border border-white">
-								HYOYEON
+								{PERSONAL_INFO.NAME[language]}
 							</div>
 						</div>
 
 						<div className="flex-1 space-y-4">
 							<h2 className="text-xl text-terra-gold animate-pulse">
-								&quot;Greetings, Traveler! Are you looking for a backend developer?&quot;
+								{t.npc.greeting}
 							</h2>
 							<p className="text-white leading-relaxed">
-								I am currently available for new adventures. If you have a quest (job) for me, please select an option below to communicate.
+								{t.npc.intro}
 							</p>
 
 							<div className="mt-8 space-y-2">
@@ -33,7 +38,7 @@ const NPCContact = () => {
 									<span className="text-terra-gold group-hover:text-black mr-2">
 										▶
 									</span>
-									Send an Email Scroll
+									{t.buttons.email}
 								</a>
 								<a
 									href={PERSONAL_INFO.GITHUB_URL}
@@ -44,14 +49,14 @@ const NPCContact = () => {
 									<span className="text-terra-gold group-hover:text-black mr-2">
 										▶
 									</span>
-									Visit GitHub Fortress
+									{t.buttons.github}
 								</a>
 								<button
 									type="button"
 									className="block w-full bg-black/50 hover:bg-gray-700 border-2 border-gray-500 hover:border-gray-400 p-3 text-left transition-colors text-gray-400"
 								>
 									<span className="mr-2">▶</span>
-									Leave (Goodbye)
+									{t.buttons.leave}
 								</button>
 							</div>
 						</div>

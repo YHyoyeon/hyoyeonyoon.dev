@@ -1,6 +1,8 @@
 import { Cloud, Code, Database, Server, Settings, Shield } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import { TECHNOLOGY_CATEGORIES } from "../data/technologies";
+import { TRANSLATIONS } from "../data/translations";
 
 type ItemType = "Backend" | "Infra" | "Frontend" | "Tool";
 type InventoryTab =
@@ -17,65 +19,65 @@ type InventoryTab =
 const TAB_META: Record<
 	InventoryTab,
 	{
-		label: string;
+		label: { ko: string; en: string };
 		icon: string;
-		theme: string;
+		theme: { ko: string; en: string };
 		examples: string;
 	}
 > = {
 	language: {
-		label: "언어·런타임",
+		label: { ko: "언어·런타임", en: "Language/Runtime" },
 		icon: "🧠",
-		theme: "개발의 기본기(언어/런타임)",
-		examples: "TypeScript, JavaScript, Node.js 등",
+		theme: { ko: "개발의 기본기(언어/런타임)", en: "Basics (Lang/Runtime)" },
+		examples: "TypeScript, JavaScript, Node.js etc",
 	},
 	backend: {
-		label: "백엔드",
+		label: { ko: "백엔드", en: "Backend" },
 		icon: "🧩",
-		theme: "서버 애플리케이션 개발(프레임워크/런타임 생태계)",
-		examples: "Express, Inversify, Swagger 등",
+		theme: { ko: "서버 애플리케이션 개발", en: "Server App Dev" },
+		examples: "Express, Inversify, Swagger etc",
 	},
 	db: {
-		label: "DB·캐시",
+		label: { ko: "DB·캐시", en: "DB/Cache" },
 		icon: "🗄️",
-		theme: "데이터 저장/조회/캐싱",
-		examples: "MySQL, Sequelize, Redis, ioredis 등",
+		theme: { ko: "데이터 저장/조회/캐싱", en: "Storage/Query/Caching" },
+		examples: "MySQL, Sequelize, Redis, ioredis etc",
 	},
 	infra: {
-		label: "인프라·DevOps",
+		label: { ko: "인프라·DevOps", en: "Infra/DevOps" },
 		icon: "🏗️",
-		theme: "클라우드/배포/운영 기반",
-		examples: "AWS EC2/S3/CloudFront, Docker, Ansible, Serverless 등",
+		theme: { ko: "클라우드/배포/운영", en: "Cloud/Deploy/Ops" },
+		examples: "AWS EC2/S3/CloudFront, Docker, Ansible etc",
 	},
 	cicd: {
-		label: "CI·CD",
+		label: { ko: "CI·CD", en: "CI/CD" },
 		icon: "🚀",
-		theme: "빌드/배포 자동화 파이프라인",
-		examples: "Jenkins, GitHub Actions 등",
+		theme: { ko: "빌드/배포 자동화", en: "Build/Deploy Automation" },
+		examples: "Jenkins, GitHub Actions etc",
 	},
 	security: {
-		label: "인증·보안",
+		label: { ko: "인증·보안", en: "Auth/Security" },
 		icon: "🛡️",
-		theme: "인증/인가/보안 아키텍처",
-		examples: "JWT, OAuth2, OIDC, Firebase Admin SDK 등",
+		theme: { ko: "인증/인가/보안", en: "Auth/Authorization/Security" },
+		examples: "JWT, OAuth2, OIDC, Firebase Admin etc",
 	},
 	testing: {
-		label: "검증·테스트",
+		label: { ko: "검증·테스트", en: "Test/Validation" },
 		icon: "🧪",
-		theme: "유효성/테스트/품질 확보",
-		examples: "Zod, Jest, Supertest, Sinon 등",
+		theme: { ko: "유효성/테스트/품질", en: "Validation/Test/Quality" },
+		examples: "Zod, Jest, Supertest, Sinon etc",
 	},
 	observability: {
-		label: "모니터링·로그",
+		label: { ko: "모니터링·로그", en: "Monitor/Log" },
 		icon: "📈",
-		theme: "관측 가능성(모니터링/로깅/트레이싱)",
-		examples: "CloudWatch, Sentry, ELK, Filebeat 등",
+		theme: { ko: "관측 가능성", en: "Observability" },
+		examples: "CloudWatch, Sentry, ELK etc",
 	},
 	tools: {
-		label: "도구",
+		label: { ko: "도구", en: "Tools" },
 		icon: "🧰",
-		theme: "협업/문서/생산성 도구",
-		examples: "Git, draw.io, Swagger 등",
+		theme: { ko: "협업/생산성 도구", en: "Collab/Productivity" },
+		examples: "Git, draw.io, Swagger etc",
 	},
 };
 
@@ -200,12 +202,14 @@ const getSpecLogo = (name: string) => {
 const Inventory = () => {
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const [activeTab, setActiveTab] = useState<InventoryTab>("language");
+	const { language } = useLanguage();
+	const t = TRANSLATIONS[language];
 
 	const allItems = useMemo<InventoryItem[]>(() => {
 		const items: InventoryItem[] = [];
 
 		for (const category of TECHNOLOGY_CATEGORIES) {
-			const type = getItemType(category.title);
+			const type = getItemType(category.title.en);
 			for (const skill of category.skills) {
 				if (shouldExcludeSkill(skill)) continue;
 
@@ -220,7 +224,7 @@ const Inventory = () => {
 							type,
 							displayName: `AWS ${service}`,
 							versionLabel: null,
-							tab: getInventoryTab(category.title, type, name),
+							tab: getInventoryTab(category.title.en, type, name),
 						});
 					}
 					continue;
@@ -234,7 +238,7 @@ const Inventory = () => {
 					type,
 					displayName,
 					versionLabel,
-					tab: getInventoryTab(category.title, type, skill),
+					tab: getInventoryTab(category.title.en, type, skill),
 				});
 			}
 		}
@@ -280,7 +284,7 @@ const Inventory = () => {
 		<div className="flex flex-col md:flex-row h-full gap-6">
 			<div className="flex-1 pixel-panel pixel-border p-4 flex flex-col">
 				<h2 className="text-xl text-terra-gold mb-4 border-b-2 border-gray-600 pb-2 flex justify-between">
-					<span>🎒 Inventory</span>
+					<span>🎒 {t.nav.inventory}</span>
 					<span className="text-sm text-gray-400">
 						{filteredItems.length} / {totalSlots}
 					</span>
@@ -291,8 +295,8 @@ const Inventory = () => {
 						<TabChip
 							key={tab}
 							active={activeTab === tab}
-							label={`${TAB_META[tab].icon} ${TAB_META[tab].label} (${tabCounts[tab]})`}
-							title={`${TAB_META[tab].theme} · ${TAB_META[tab].examples}`}
+							label={`${TAB_META[tab].icon} ${TAB_META[tab].label[language]} (${tabCounts[tab]})`}
+							title={`${TAB_META[tab].theme[language]} · ${TAB_META[tab].examples}`}
 							onClick={() => {
 								setActiveTab(tab);
 								setSelectedId(null);
@@ -303,12 +307,12 @@ const Inventory = () => {
 
 				<div className="mb-3 bg-black/20 border-2 border-terra-border px-3 py-2 text-xs text-gray-100">
 					<span className="text-terra-gold">
-						{TAB_META[activeTab].icon} {TAB_META[activeTab].label}:
+						{TAB_META[activeTab].icon} {TAB_META[activeTab].label[language]}:
 					</span>{" "}
-					{TAB_META[activeTab].theme}
+					{TAB_META[activeTab].theme[language]}
 					<span className="text-gray-300">
 						{" "}
-						(예: {TAB_META[activeTab].examples})
+						(ex: {TAB_META[activeTab].examples})
 					</span>
 				</div>
 
@@ -319,15 +323,13 @@ const Inventory = () => {
 							type="button"
 							onClick={() => item && setSelectedId(item.id)}
 							className={`aspect-square bg-terra-item border-2 flex items-center justify-center text-2xl hover:bg-gray-600 transition-colors relative group
-								${
-									item
-										? "cursor-pointer border-gray-500 hover:border-terra-gold"
-										: "cursor-default border-gray-700 opacity-50"
+								${item
+									? "cursor-pointer border-gray-500 hover:border-terra-gold"
+									: "cursor-default border-gray-700 opacity-50"
 								}
-								${
-									item && selectedId === item.id
-										? "border-terra-gold bg-gray-600 shadow-[0_0_10px_rgba(255,215,0,0.3)]"
-										: ""
+								${item && selectedId === item.id
+									? "border-terra-gold bg-gray-600 shadow-[0_0_10px_rgba(255,215,0,0.3)]"
+									: ""
 								}`}
 						>
 							{item && (
@@ -351,7 +353,7 @@ const Inventory = () => {
 					))}
 				</div>
 				<div className="mt-4 text-xs text-gray-500 text-center">
-					아이템을 클릭하면 상세 정보가 나옵니다
+					{t.inventory.clickHint}
 				</div>
 			</div>
 
@@ -373,12 +375,12 @@ const Inventory = () => {
 									{selectedItem.type} Item
 								</span>
 								<div className="text-xs text-gray-200 mt-1">
-									분류:{" "}
+									{t.inventory.category}{" "}
 									<span className="text-terra-gold">
-										{TAB_META[selectedItem.tab].label}
+										{TAB_META[selectedItem.tab].label[language]}
 									</span>{" "}
 									<span className="text-gray-400">
-										({TAB_META[selectedItem.tab].theme})
+										({TAB_META[selectedItem.tab].theme[language]})
 									</span>
 								</div>
 								{selectedItem.versionLabel && (
@@ -392,7 +394,7 @@ const Inventory = () => {
 						<div className="space-y-4 text-sm text-gray-300">
 							<div>
 								<p className="text-gray-500 text-xs uppercase mb-1">
-									Proficiency
+									{t.inventory.proficiency}
 								</p>
 								<div className="w-full h-2 bg-gray-900 border border-gray-600 rounded-full overflow-hidden">
 									<div className="h-full bg-terra-gold w-[90%]" />
@@ -400,10 +402,10 @@ const Inventory = () => {
 							</div>
 
 							<div className="bg-black/30 p-3 border border-gray-700 h-full text-xs leading-relaxed">
-								<p>수많은 전투(프로젝트)에서 단련된 장비다.</p>
+								<p>{t.inventory.desc}</p>
 								<br />
 								<p className="text-gray-400">
-									Can be used to craft:{" "}
+									{t.inventory.craft}{" "}
 									<span className="text-white">
 										{selectedItem.name.toLowerCase().includes("aws")
 											? "Cloud Infrastructure"
@@ -416,10 +418,8 @@ const Inventory = () => {
 				) : (
 					<div className="flex-1 flex flex-col items-center justify-center text-gray-500 gap-4">
 						<span className="text-4xl opacity-30">🔍</span>
-						<p className="text-center text-xs">
-							탭에서 아이템을 선택하면
-							<br />
-							상세 스탯이 표시됩니다.
+						<p className="text-center text-xs whitespace-pre-line">
+							{t.inventory.empty}
 						</p>
 					</div>
 				)}
@@ -441,11 +441,10 @@ const TabChip = ({ active, label, onClick, title }: TabChipProps) => {
 			type="button"
 			onClick={onClick}
 			title={title}
-			className={`px-3 py-2 border-2 text-xs pixel-btn ${
-				active
-					? "bg-terra-gold text-black border-black"
-					: "bg-black/30 text-white border-terra-border hover:border-terra-gold"
-			}`}
+			className={`px-3 py-2 border-2 text-xs pixel-btn ${active
+				? "bg-terra-gold text-black border-black"
+				: "bg-black/30 text-white border-terra-border hover:border-terra-gold"
+				}`}
 		>
 			{label}
 		</button>

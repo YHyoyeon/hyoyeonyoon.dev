@@ -1,12 +1,17 @@
+import { useLanguage } from "../context/LanguageContext";
 import { TROUBLESHOOTING_CASES } from "../data/troubleshooting";
+import { TRANSLATIONS } from "../data/translations";
 
 const AdventureJournal = () => {
+	const { language } = useLanguage();
+	const t = TRANSLATIONS[language];
+
 	return (
 		<div className="h-full max-w-4xl mx-auto">
 			<h2 className="text-2xl text-terra-gold mb-6 flex items-center gap-3">
-				📖 Adventure Journal{" "}
+				{t.journal.title}{" "}
 				<span className="text-sm text-gray-400 font-normal">
-					(Troubleshooting Logs)
+					{t.journal.subtitle}
 				</span>
 			</h2>
 
@@ -23,39 +28,50 @@ const AdventureJournal = () => {
 						<div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pixel-panel pixel-border p-4 md:p-6 bg-black/40 hover:bg-black/50 transition-colors border-2 border-gray-600 hover:border-gray-400">
 							<div className="flex items-center justify-between space-x-2 mb-1">
 								<div className="font-bold text-slate-200">
-									Issue #{log.id}
+									{t.journal.issue}{log.id}
 								</div>
 								<time className="font-medium text-terra-gold text-xs">
-									{log.date || "Unknown Date"}
+									{log.date || t.journal.unknownDate}
 								</time>
 							</div>
 							<h3 className="text-lg font-bold text-terra-red mb-2">
-								&quot;{log.title}&quot;
+								&quot;{log.title[language]}&quot;
 							</h3>
 
 							<div className="space-y-3 text-sm">
 								<div className="bg-black/40 p-2 border-l-2 border-terra-red">
 									<p className="text-xs text-terra-red font-bold mb-1">
-										[THE THREAT]
+										{t.journal.threat}
 									</p>
-									<p className="text-gray-300">{log.problem}</p>
+									<p className="text-gray-300">{log.problem[language]}</p>
 								</div>
 
 								<div className="bg-black/40 p-2 border-l-2 border-terra-gold">
 									<p className="text-xs text-terra-gold font-bold mb-1">
-										[THE VICTORY]
+										{t.journal.victory}
 									</p>
-									<p className="text-gray-300">{log.solution}</p>
+									<p className="text-gray-300">{log.solution[language]}</p>
 								</div>
 
 								<div className="mt-2 pt-2 border-t border-gray-700">
 									<p className="text-xs text-gray-400">
 										<span className="text-terra-gold">
-											Loot (Result):
+											{t.journal.loot}
 										</span>{" "}
-										{log.result}
+										{log.result[language]}
 									</p>
 								</div>
+								{log.technicalDetails && (
+									<div className="mt-2 text-xs text-gray-400">
+										<ul className="list-disc list-inside">
+											{log.technicalDetails.map((detail, idx) => (
+												<li key={idx}>
+													{typeof detail === 'string' ? detail : detail[language]}
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

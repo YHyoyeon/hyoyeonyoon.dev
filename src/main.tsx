@@ -7,4 +7,10 @@ if (!rootElement) {
   throw new Error("Failed to find root element");
 }
 
-createRoot(rootElement).render(<App />);
+import { LanguageProvider } from "./context/LanguageContext";
+
+createRoot(rootElement).render(
+  <LanguageProvider>
+    <App />
+  </LanguageProvider>
+);
