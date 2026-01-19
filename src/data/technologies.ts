@@ -50,7 +50,7 @@ export const TECHNOLOGY_CATEGORIES: TechnologyCategory[] = [
     icon: "Cloud",
     color: "orange",
     skills: [
-      "AWS (SES, EC2, S3, CloudFront, ALB, ECR, Lambda, API Gateway)",
+      "AWS (SES, EC2, S3, CloudFront, ALB, ECR, Lambda, API Gateway, Amplify)",
       "Docker & Turborepo",
       "Jenkins",
       "GitHub Actions",

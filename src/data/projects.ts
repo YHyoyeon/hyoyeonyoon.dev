@@ -67,6 +67,14 @@ export const PROJECTS: Project[] = [
         en: "Integrated AWS SES (Email) and Redis (Session management/Caching)",
       },
       {
+        ko: "실시간 결제 처리를 위한 전용 Billing Webhook 마이크로서비스 구축 및 안정적인 이벤트 처리 보장",
+        en: "Built dedicated Billing Webhook microservice ensuring reliable real-time payment event processing",
+      },
+      {
+        ko: "Docker Compose Profiles를 활용하여 개발 환경 리소스 사용량 최적화 (필요한 서비스만 선택적 실행)",
+        en: "Optimized dev environment resources using Docker Compose Profiles (Selective service execution)",
+      },
+      {
         ko: "ESLint, Prettier, Husky를 통한 엄격한 코드 품질 관리 및 Dependency Cruiser를 이용한 의존성 그래프 시각화",
         en: "Enforced strict code quality via ESLint, Prettier, Husky and visualized dependencies with Dependency Cruiser",
       },
@@ -80,10 +88,11 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS v4",
       "MySQL 8.0+ (Sequelize)",
       "Redis 5.8.2",
-      "AWS (SES, EC2, S3, CloudFront)",
-      "Docker & Turborepo",
+      "AWS (SES, EC2, S3, CloudFront, Amplify)",
+      "Docker & Turborepo (Compose Profiles)",
       "InversifyJS",
       "Dependency Cruiser",
+      "Serverless Framework",
     ],
     highlights: [
       {
