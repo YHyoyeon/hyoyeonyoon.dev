@@ -5,9 +5,10 @@
 
 export const PERSONAL_INFO = {
   NAME: "윤효연",
-  POSITION: "백엔드 개발자 (Node.js / TypeScript)",
+  POSITION: "리드 / 시니어 풀스택 엔지니어 (Lead / Senior Full Stack Engineer)",
   EXPERIENCE: "2025년 3월 ~ 현재",
-  SPECIALTY: "백엔드 개발, 인프라 구축, DevOps, 마이크로서비스 아키텍처",
+  SPECIALTY:
+    "백엔드 개발, 인프라 구축, DevOps, 모노레포 아키텍처, DX 최적화, 마이크로서비스",
   EMAIL: "gydus.dev@gmail.com",
   BLOG_URL: "https://dungdung-developer.tistory.com/",
   GITHUB_URL: "https://github.com/YHyoyeon",

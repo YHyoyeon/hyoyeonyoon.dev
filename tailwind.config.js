@@ -4,12 +4,27 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
     theme: {
       extend: {
+        fontFamily: {
+          pixel: ["DungGeunMo", "Press Start 2P", "monospace"],
+        },
         borderRadius: {
           lg: "var(--radius)",
           md: "calc(var(--radius) - 2px)",
           sm: "calc(var(--radius) - 4px)",
         },
         colors: {
+          terra: {
+            bg: "#6ebce5",
+            panel: "#2f3a57",
+            border: "#3a2b1a",
+            gold: "#f4d03f",
+            red: "#d64541",
+            blue: "#3498db",
+            item: "#8b5a2b",
+            grass: "#3fa34d",
+            dirt: "#8b5a2b",
+            cloud: "#d9f1ff",
+          },
           background: "hsl(var(--background))",
           foreground: "hsl(var(--foreground))",
           card: {

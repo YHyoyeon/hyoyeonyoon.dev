@@ -27,7 +27,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 	return (
 		<section
 			id="hero"
-			className="relative min-h-screen flex items-center justify-center bg-orange-600 overflow-hidden"
+			className="relative min-h-screen flex items-center justify-center overflow-hidden bg-terra-bg"
 		>
 			{/* Animated Background */}
 			<div className="absolute inset-0">
@@ -70,10 +70,12 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 			</motion.div>
 
 			{/* Scroll Progress Bar */}
-							<div className="fixed top-0 left-0 w-full h-1 bg-orange-800 z-50">
+			<div className="fixed top-0 left-0 w-full h-1 z-50 bg-terra-panel">
 				<motion.div
-					className="h-full bg-yellow-400"
-					style={{ width: `${scrollProgress * 100}%` }}
+					className="h-full bg-terra-gold"
+					style={{
+						width: `${scrollProgress * 100}%`,
+					}}
 				/>
 			</div>
 
@@ -117,16 +119,13 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 							className="text-lg md:text-xl text-slate-200 leading-relaxed mb-10 max-w-2xl space-y-4"
 						>
 							<span className="block">
-								{PERSONAL_INFO.SPECIALTY}를 전문으로 하는 백엔드 개발자입니다.
+								확장 가능한 엔터프라이즈급 웹 애플리케이션 구축 경험이 풍부한 시니어 풀스택 엔지니어입니다.
 							</span>
 							<span className="block text-slate-300">
-								Softnyx Portal 리마스터 프로젝트 전담 개발을 통해 AWS 기반 클라우드 인프라 구축,
-								CI/CD 파이프라인 설계, 마이크로서비스 아키텍처 기반 인증 시스템 개발 등
-								백엔드부터 인프라, DevOps까지 폭넓게 경험했습니다.
+								성능 중심의 모노레포 솔루션 설계, 보안 인증 시스템 구현, 데이터 중심의 반응형 사용자 인터페이스 개발에 입증된 실적을 보유하고 있습니다.
 							</span>
 							<span className="block text-slate-200 font-medium">
-								특히 배포 시간 80% 단축, 50개 이상의 PORTAL 이슈 개발 및 완료 등
-								실질적인 성과를 만들어냈습니다.
+								개발자 경험(DX) 최적화 및 CI/CD 파이프라인 효율화에 능숙합니다.
 							</span>
 						</motion.p>
 

@@ -35,117 +35,79 @@ const Experience = () => {
 			period: `재직중 (${softnixDuration})`,
 			location: "서울",
 			description:
-				"Softnyx Portal 리마스터 프로젝트 전담 개발을 통해 AWS 기반 클라우드 인프라 구축, CI/CD 파이프라인 설계, 마이크로서비스 아키텍처 기반 인증 시스템 개발을 담당했습니다. 50개 이상의 PORTAL 이슈 개발 및 완료, 배포 시간 80% 단축 등 실질적인 성과를 만들어냈습니다.",
+				"엔터프라이즈 서버 포털은 대규모 소프트웨어 생태계를 위한 사용자 인증, 빌링, 시스템 관리를 통합하는 정교한 웹 애플리케이션 모음입니다. 모던 모노레포 아키텍처를 기반으로 구축되어 관리자 대시보드, 사용자 포털, 인증 서비스를 단일의 응집력 있는 코드베이스로 통합했습니다.",
 			achievements: [
 				{
-					title: "NFT 마켓 API 개발",
+					title: "아키텍처 및 확장성",
 					description:
-						"상품 등록/구매, 거래 내역 그래프 등 nft 거래에 필요한 api 개발",
+						"pnpm workspace와 Turborepo를 활용한 확장 가능한 모노레포 아키텍처 설계 (빌드 시간 40% 단축) 및 모듈화",
+					icon: Settings,
+				},
+				{
+					title: "관리자 대시보드",
+					description:
+						"Next.js 15, React 19 기반의 실시간 데이터 시각화(ApexCharts, Vector Maps) 관리자 대시보드 구축",
 					icon: Code,
 				},
 				{
-					title: "백오피스 시스템 개발",
+					title: "인증 UI 개발",
 					description:
-						"Node.js와 React로 NFT 마켓 백오피스 개발. 대시보드(지표 차트), 거래내역 등 로그 확인, 운영자 관리, 점검 제어, 마켓 아이템 제어 등 운영 시스템 구축",
-					icon: Settings,
-				},
-				{
-					title: "테스트 자동화",
-					description:
-						"Jest, Supertest, Sinon, Zod를 활용하여 통합 테스트를 구축",
+						"SSR 및 i18next(다국어) 지원이 포함된 고성능 인증 UI 개발",
 					icon: Code,
 				},
 				{
-					title: "로그 모니터링",
+					title: "디자인 시스템",
 					description:
-						"Filebeat와 ELK 스택으로 실시간 로그 확인 시스템을 개발하고, AWS CloudWatch, Chatbot, SNS와 연동",
-					icon: Cloud,
-				},
-				{
-					title: "Redis 활용",
-					description: "이벤트 랭킹 및 통계 페이지를 Redis로 구현",
-					icon: Database,
-				},
-				{
-					title: "CICD 구축",
-					description:
-						"GitHub Actions와 Jenkins로 빌드 자동화를 구현하고, AWS CodeDeploy로 CI/CD 파이프라인을 구축해 배포 프로세스를 최적화",
-					icon: Cloud,
-				},
-				{
-					title: "Lambda 활용",
-					description:
-						"AWS MemoryDB와 serverless NPM 패키지, Lambda를 기반으로 사전 예약 페이지를 개발",
+						"Tailwind CSS v4, Radix UI를 활용한 반응형/접근성 높은 디자인 시스템 도입",
 					icon: Code,
 				},
 				{
-					title: "사전예약 대량 메일 전송 시스템",
+					title: "중앙화된 인증 서비스",
 					description:
-						"memorydb와 ses, lambda를 활용하여 약 12000건의 메일을 전송 후 cloudwatch를 통해 성공/실패 분석",
-					icon: Cloud,
-				},
-				{
-					title: "AI를 활용한 프론트 백업",
-					description:
-						"거래 프로세스 개선 프로젝트에서 일감 관리, QA 부분적인 리딩을 맡고, 일정을 위해 AI를 활용하여 리액트 프로젝트의 기능 및 UI 수정 백업",
+						"OAuth2, JWT, 다중 로그인 전략을 지원하는 중앙화된 인증 서비스 개발",
 					icon: Settings,
 				},
 				{
-					title: "성과관리지표",
-					description: "Looker Studio(Data Studio)를 통한 KPI 작성",
+					title: "의존성 주입(DI)",
+					description:
+						"백엔드 코어에 InversifyJS를 이용한 의존성 주입 구현으로 테스트 용이성 확보",
 					icon: Settings,
 				},
 				{
-					title: "프로젝트 인프라 구축",
+					title: "RBAC 보안",
 					description:
-						"PORTAL 프로젝트를 포함하여 dev/qa/live 환경 AWS VPC, EC2, ECR, S3, CloudFront, WAF 등 클라우드 인프라 구축",
-					icon: Cloud,
-				},
-				{
-					title: "CI/CD 파이프라인 구축",
-					description:
-						"Jenkins와 GitHub Actions를 활용한 dev/qa/live 환경 분리 및 자동화된 배포 파이프라인 구축",
+						"Express.js 마이크로서비스 보호를 위한 역할 기반 접근 제어 미들웨어 구현",
 					icon: Settings,
 				},
 				{
-					title: "컨테이너 환경 구축",
+					title: "AWS 및 Redis 통합",
 					description:
-						"Docker 기반 Web API, MySQL, Redis, ELK 스택 컨테이너화 및 PM2 로그 로테이션 설정",
-					icon: Database,
+						"AWS SES(이메일), Redis(세션/캐시) 통합으로 시스템 안정성 확보",
+					icon: Cloud,
 				},
 				{
-					title: "보안 및 모니터링 시스템",
+					title: "DX 최적화",
 					description:
-						"WAF 설정, Lambda 기반 알림 시스템, ELK 스택 로그 모니터링",
-					icon: Cloud,
+						"ESLint, Prettier, Husky, Dependency Cruiser 도입으로 코드 품질 및 아키텍처 관리",
+					icon: Settings,
 				},
 			],
 			technologies: [
-				"TypeScript",
+				"Next.js 15",
+				"React 19",
+				"Tailwind CSS v4",
+				"Radix UI",
 				"Node.js",
+				"Express.js",
+				"InversifyJS",
+				"TypeScript",
 				"MySQL",
 				"Redis",
 				"AWS",
-				"Docker",
-				"Jenkins",
-				"GitHub Actions",
-				"Lambda",
-				"ELK",
-				"Jest",
-				"Supertest",
-				"Zod",
-				"Sinon",
-				"MemoryDB",
-				"React",
-				"Data Studio",
-				"VPC",
-				"EC2",
-				"ECR",
-				"S3",
-				"CloudFront",
-				"WAF",
-				"PM2",
-				"Filebeat",
+				"Docker & Turborepo",
+				"Dependency Cruiser",
+				"ApexCharts",
+				"TanStack Table",
 			],
 		},
 		{
@@ -372,9 +334,9 @@ const Experience = () => {
 													animate={
 														inView
 															? {
-																	opacity: 1,
-																	y: 0,
-																}
+																opacity: 1,
+																y: 0,
+															}
 															: {}
 													}
 													transition={{
@@ -382,7 +344,7 @@ const Experience = () => {
 														delay:
 															expIndex * 0.2 +
 															achievementIndex *
-																0.05,
+															0.05,
 													}}
 													className="group flex gap-4 p-5 bg-gradient-to-br from-gray-50 to-orange-50/30 rounded-xl hover:shadow-md border border-gray-100 hover:border-orange-200 transition-all duration-300"
 												>
@@ -429,9 +391,9 @@ const Experience = () => {
 														animate={
 															inView
 																? {
-																		opacity: 1,
-																		scale: 1,
-																	}
+																	opacity: 1,
+																	scale: 1,
+																}
 																: {}
 														}
 														transition={{
@@ -439,7 +401,7 @@ const Experience = () => {
 															delay:
 																expIndex * 0.2 +
 																techIndex *
-																	0.03,
+																0.03,
 														}}
 														className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 text-orange-800 rounded-lg text-sm font-medium border border-yellow-200 hover:border-yellow-300 hover:shadow-sm transition-all duration-200"
 													>

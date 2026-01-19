@@ -1,45 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+@font-face {
+	font-family: "DungGeunMo";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/DungGeunMo.woff2")
+		format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	* {
-		@apply border-border;
-	}
+:root {
+	--terra-bg: #6ebce5;
+	--terra-panel: #2f3a57;
+	--terra-border-light: #3a2b1a;
+	--terra-border-dark: #0b0b0b;
+	--terra-text: #ffffff;
+	--terra-accent: #f4d03f;
+	--terra-grass: #3fa34d;
+	--terra-dirt: #8b5a2b;
+	--terra-cloud: #d9f1ff;
+}
 
+@layer base {
 	body {
-		@apply bg-[#fafbfc] text-gray-900 font-sans;
-		font-family:
-			'Inter',
-			system-ui,
-			-apple-system,
-			sans-serif;
 		margin: 0;
 		padding: 0;
-		overflow-x: hidden;
+		background-color: var(--terra-bg);
+		color: var(--terra-text);
+		font-family: "DungGeunMo", "Press Start 2P", monospace;
+		overflow: hidden;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		line-height: 1.6;
 	}
 
 	html {
 		scroll-behavior: smooth;
 	}
+}
 
-	h1, h2, h3, h4, h5, h6 {
-		@apply font-bold;
-		letter-spacing: -0.02em;
-		line-height: 1.2;
-	}
+/* 테라리아 스타일 스크롤바 */
+::-webkit-scrollbar {
+	width: 12px;
+	background: var(--terra-panel);
+}
 
-	p {
-		line-height: 1.75;
-	}
+::-webkit-scrollbar-thumb {
+	background: var(--terra-dirt);
+	border: 2px solid var(--terra-border-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--terra-border-light);
 }
 
 @layer components {
+	.font-pixel {
+		font-family: "DungGeunMo", "Press Start 2P", monospace;
+	}
+
+	.pixel-border {
+		box-shadow:
+			-4px 0 0 0 black,
+			4px 0 0 0 black,
+			0 -4px 0 0 black,
+			0 4px 0 0 black;
+		margin: 4px;
+	}
+
+	.pixel-panel {
+		background-color: var(--terra-panel);
+		border: 4px solid var(--terra-border-light);
+		outline: 4px solid var(--terra-border-dark);
+		box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+	}
+
+	.pixel-btn {
+		transition: all 0.1s;
+	}
+
+	.pixel-btn:active {
+		transform: translateY(2px);
+	}
+
 	.gradient-border {
 		background: linear-gradient(90deg, #f8fcff 0%, #ececec 50%, #f8fcff 100%);
 		padding: 1px;
