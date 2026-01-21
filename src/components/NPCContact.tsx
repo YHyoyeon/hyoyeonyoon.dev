@@ -33,7 +33,7 @@ const NPCContact = () => {
 									href={`mailto:${PERSONAL_INFO.EMAIL}`}
 									className="block w-full bg-white hover:bg-terra-item border-2 border-terra-border p-4 rounded-xl text-left transition-all hover:-translate-y-1 shadow-sm group"
 								>
-									<span className="font-bold text-black group-hover:text-terra-accent mr-2">▶</span>
+									<span className="font-bold text-black group-hover:text-terra-accent mr-2">-</span>
 									<span className="text-black font-bold">{t.buttons.email}</span>
 								</a>
 								<a
@@ -42,7 +42,7 @@ const NPCContact = () => {
 									rel="noreferrer"
 									className="block w-full bg-white hover:bg-terra-item border-2 border-terra-border p-4 rounded-xl text-left transition-all hover:-translate-y-1 shadow-sm group"
 								>
-									<span className="font-bold text-black group-hover:text-terra-accent mr-2">▶</span>
+									<span className="font-bold text-black group-hover:text-terra-accent mr-2">-</span>
 									<span className="text-black font-bold">{t.buttons.github}</span>
 								</a>
 							</div>

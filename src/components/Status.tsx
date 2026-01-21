@@ -52,10 +52,10 @@ const Status = () => {
 							{t.status.specialBuffs}
 						</h3>
 						<ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-							<BuffItem icon="•" text={t.status.buffs.speed} />
-							<BuffItem icon="•" text={t.status.buffs.stability} />
-							<BuffItem icon="•" text={t.status.buffs.architecture} />
-							<BuffItem icon="•" text={t.status.buffs.global} />
+							<BuffItem icon="-" text={t.status.buffs.speed} />
+							<BuffItem icon="-" text={t.status.buffs.stability} />
+							<BuffItem icon="-" text={t.status.buffs.architecture} />
+							<BuffItem icon="-" text={t.status.buffs.global} />
 						</ul>
 					</div>
 				</div>
