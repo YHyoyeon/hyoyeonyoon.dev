@@ -72,7 +72,7 @@ const Introduction = ({ scrollProgress }: HeroProps) => {
 			{/* Scroll Progress Bar */}
 			<div className="fixed top-0 left-0 w-full h-1 z-50 bg-terra-panel">
 				<motion.div
-					className="h-full bg-terra-gold"
+					className="h-full bg-orange-500"
 					style={{
 						width: `${scrollProgress * 100}%`,
 					}}

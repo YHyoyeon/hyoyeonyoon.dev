@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
   {
     id: "portal-remaster",
     title: {
-      ko: "엔터프라이즈 서버 포털 (Enterprise Server Portal)",
+      ko: "엔터프라이즈 서버 포털",
       en: "Enterprise Server Portal",
     },
     period: "2025.07 ~ 2025.12",

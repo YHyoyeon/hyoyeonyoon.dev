@@ -1,28 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
-@font-face {
-	font-family: "DungGeunMo";
-	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/DungGeunMo.woff2")
-		format("woff2");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-	--terra-bg: #6ebce5;
-	--terra-panel: #2f3a57;
-	--terra-border-light: #3a2b1a;
-	--terra-border-dark: #0b0b0b;
-	--terra-text: #ffffff;
-	--terra-accent: #f4d03f;
-	--terra-grass: #3fa34d;
-	--terra-dirt: #8b5a2b;
-	--terra-cloud: #d9f1ff;
+	--terra-bg: #38BDF8;
+	--terra-panel: #FFFFFF;
+	--terra-border: #475569;
+	--terra-border-light: #94A3B8;
+	--terra-border-dark: #1E293B;
+	--terra-text: #000000;
+	--terra-accent: #EA580C;
+	--terra-red: #EF4444;
+	--terra-blue: #2563EB;
+	--terra-item: #FFFFFF;
+	--terra-grass: #4ADE80;
+	--terra-dirt: #854D0E;
+	--terra-cloud: #FFFFFF;
 }
 
 @layer base {
@@ -31,7 +24,7 @@
 		padding: 0;
 		background-color: var(--terra-bg);
 		color: var(--terra-text);
-		font-family: "DungGeunMo", "Press Start 2P", monospace;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		overflow: hidden;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
@@ -59,23 +52,24 @@
 
 @layer components {
 	.font-pixel {
-		font-family: "DungGeunMo", "Press Start 2P", monospace;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	}
 
 	.pixel-border {
 		box-shadow:
-			-4px 0 0 0 black,
-			4px 0 0 0 black,
-			0 -4px 0 0 black,
-			0 4px 0 0 black;
+			-4px 0 0 0 var(--terra-border-dark),
+			4px 0 0 0 var(--terra-border-dark),
+			0 -4px 0 0 var(--terra-border-dark),
+			0 4px 0 0 var(--terra-border-dark);
 		margin: 4px;
 	}
 
 	.pixel-panel {
 		background-color: var(--terra-panel);
-		border: 4px solid var(--terra-border-light);
-		outline: 4px solid var(--terra-border-dark);
-		box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+		border: 4px solid var(--terra-border-dark);
+		border-top: 24px solid var(--terra-accent);
+		box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+		position: relative;
 	}
 
 	.pixel-btn {
@@ -100,6 +94,7 @@
 	}
 
 	@keyframes bounce {
+
 		0%,
 		20%,
 		50%,
@@ -107,9 +102,11 @@
 		100% {
 			transform: translateY(0);
 		}
+
 		40% {
 			transform: translateY(-10px);
 		}
+
 		60% {
 			transform: translateY(-5px);
 		}
@@ -168,30 +165,58 @@
 		@apply text-orange-600;
 	}
 
-    /* Parallax Animations */
-    @keyframes parallax-scroll {
-        from { background-position: 0 0; }
-        to { background-position: -100% 0; }
-    }
+	/* Parallax Animations */
+	@keyframes parallax-scroll {
+		from {
+			background-position: 0 0;
+		}
 
-    .animate-parallax-slow {
-        animation: parallax-scroll 60s linear infinite;
-    }
+		to {
+			background-position: -100% 0;
+		}
+	}
 
-    .animate-parallax-medium {
-        animation: parallax-scroll 30s linear infinite;
-    }
+	.animate-parallax-slow {
+		animation: parallax-scroll 60s linear infinite;
+	}
 
-    .animate-parallax-fast {
-        animation: parallax-scroll 10s linear infinite;
-    }
-    
-    @keyframes bounce-pixel {
-        0%, 100% { transform: translate(-50%, 0); }
-        50% { transform: translate(-50%, -4px); }
-    }
-    
-    .animate-bounce-pixel {
-        animation: bounce-pixel 0.8s steps(2) infinite;
-    }
+	.animate-parallax-medium {
+		animation: parallax-scroll 30s linear infinite;
+	}
+
+	.animate-parallax-fast {
+		animation: parallax-scroll 10s linear infinite;
+	}
+
+	@keyframes bounce-pixel {
+
+		0%,
+		100% {
+			transform: translate(-50%, 0);
+		}
+
+		50% {
+			transform: translate(-50%, -4px);
+		}
+	}
+
+	.animate-bounce-pixel {
+		animation: bounce-pixel 0.8s steps(2) infinite;
+	}
+
+	@keyframes fly {
+		from {
+			transform: translateX(120vw);
+		}
+
+		to {
+			transform: translateX(-20vw);
+		}
+	}
+
+	.animate-fly {
+		animation-name: fly;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
 }

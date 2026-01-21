@@ -58,7 +58,7 @@ const NavigationButtons = ({ scrollContainerRef }: NavigationButtonsProps) => {
 					<button
 						key={section.id}
 						onClick={() => scrollToSection(section.id)}
-						className="px-3 py-1 text-sm font-medium text-white hover:text-terra-gold hover:bg-white/5 rounded-full transition-all duration-200"
+						className="px-3 py-1 text-sm font-medium text-white hover:text-orange-500 hover:bg-white/5 rounded-full transition-all duration-200"
 						aria-label={`${section.label} 섹션으로 이동`}
 					>
 						{section.label}
@@ -73,7 +73,7 @@ const NavigationButtons = ({ scrollContainerRef }: NavigationButtonsProps) => {
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: 20 }}
 					onClick={scrollToTop}
-					className="bg-black/70 text-white hover:text-terra-gold hover:bg-black/80 hover:scale-110 transition-all duration-200 cursor-pointer p-2 rounded-full shadow-lg border border-black"
+					className="bg-black/70 text-white hover:text-orange-500 hover:bg-black/80 hover:scale-110 transition-all duration-200 cursor-pointer p-2 rounded-full shadow-lg border border-black"
 					aria-label="페이지 상단으로 이동"
 				>
 					<ChevronUp size={16} />

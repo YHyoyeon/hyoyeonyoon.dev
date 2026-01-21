@@ -10,8 +10,8 @@ export const PERSONAL_INFO = {
     en: "Yoon HyoYeon",
   },
   POSITION: {
-    ko: "리드 / 시니어 풀스택 엔지니어 (Lead / Senior Full Stack Engineer)",
-    en: "Lead / Senior Full Stack Engineer",
+    ko: "팀장 / 백엔드 개발자",
+    en: "Team Lead / Backend Developer",
   },
   EXPERIENCE: {
     ko: "2025년 3월 ~ 현재",

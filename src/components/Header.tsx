@@ -50,7 +50,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 							<button
 								key={item.name}
 								onClick={() => scrollToSection(item.href)}
-								className={`text-sm font-medium transition-colors duration-300 hover:text-terra-gold ${
+								className={`text-sm font-medium transition-colors duration-300 hover:text-orange-500 ${
 									isScrolled ? "text-white" : "text-white"
 								}`}
 							>
@@ -61,7 +61,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 							href="https://github.com/YHyoyeon"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`p-2 rounded-md transition-colors duration-300 hover:text-terra-gold ${
+							className={`p-2 rounded-md transition-colors duration-300 hover:text-orange-500 ${
 								isScrolled ? "text-white" : "text-white"
 							}`}
 						>
@@ -90,7 +90,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 								<button
 									key={item.name}
 									onClick={() => scrollToSection(item.href)}
-									className="block w-full text-left px-3 py-2 text-sm font-medium text-white hover:text-terra-gold hover:bg-white/5 rounded-md transition-colors duration-300"
+									className="block w-full text-left px-3 py-2 text-sm font-medium text-white hover:text-orange-500 hover:bg-white/5 rounded-md transition-colors duration-300"
 								>
 									{item.name}
 								</button>
@@ -99,7 +99,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 								href="https://github.com/YHyoyeon"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white hover:text-terra-gold hover:bg-white/5 rounded-md transition-colors duration-300"
+								className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white hover:text-orange-500 hover:bg-white/5 rounded-md transition-colors duration-300"
 							>
 								<Github size={16} />
 								<span>GitHub</span>

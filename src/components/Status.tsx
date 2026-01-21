@@ -9,13 +9,13 @@ const Status = () => {
 	const t = TRANSLATIONS[language];
 
 	return (
-		<div className="h-full flex flex-col md:flex-row gap-8 items-center md:items-start justify-center animate-in fade-in">
+		<div className="h-full flex flex-col md:flex-row gap-8 items-center md:items-start justify-center animate-in fade-in pb-20">
 			<div className="pixel-panel pixel-border p-6 w-full md:w-1/3 flex flex-col items-center gap-6">
-				<div className="w-48 h-48 bg-black border-4 border-terra-border relative group overflow-hidden">
-					<div className="absolute inset-0 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform cursor-pointer">
-						🐱
+				<div className="w-48 h-48 bg-white border-4 border-terra-border relative group overflow-hidden">
+					<div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-terra-text group-hover:scale-110 transition-transform cursor-pointer">
+						YH
 					</div>
-					<div className="absolute bottom-0 w-full bg-black/70 text-center text-xs py-1 text-terra-gold whitespace-nowrap overflow-hidden text-ellipsis px-1">
+					<div className="absolute bottom-0 w-full bg-terra-panel/90 text-center text-xs py-1 text-terra-accent whitespace-nowrap overflow-hidden text-ellipsis px-1">
 						{PERSONAL_INFO.NAME[language]} (Backend)
 					</div>
 				</div>
@@ -29,20 +29,20 @@ const Status = () => {
 			</div>
 
 			<div className="pixel-panel pixel-border p-8 w-full md:w-2/3 min-h-[400px] relative">
-				<h2 className="text-2xl text-terra-gold mb-6 border-b-4 border-dashed border-gray-600 pb-2">
+				<h2 className="text-2xl text-orange-500 mb-6 border-b-4 border-dashed border-gray-600 pb-2">
 					{t.status.title}
 				</h2>
 
-				<div className="space-y-6 text-sm md:text-base leading-relaxed text-gray-200">
+				<div className="space-y-6 text-sm md:text-base leading-relaxed text-black">
 					<p>
-						<span className="text-terra-gold font-bold">Class:</span>{" "}
+						<span className="text-orange-500 font-bold">{t.status.class}:</span>{" "}
 						{PERSONAL_INFO.POSITION[language]}
 					</p>
 					<p>
-						<span className="text-terra-gold font-bold">Guild:</span>{" "}
+						<span className="text-orange-500 font-bold">{t.status.guild}:</span>{" "}
 						{CAREER.COMPANY[language]} ({PERSONAL_INFO.EXPERIENCE[language]})
 					</p>
-					<p className="bg-black/30 p-4 border-2 border-gray-600 rounded">
+					<p className="bg-yellow-50 p-4 border-2 border-orange-500/30 rounded text-black italic font-medium">
 						"{PERSONAL_INFO.SPECIALTY[language]}"
 					</p>
 
@@ -52,10 +52,10 @@ const Status = () => {
 							{t.status.specialBuffs}
 						</h3>
 						<ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-							<BuffItem icon="✨" text={t.status.buffs.speed} />
-							<BuffItem icon="💎" text={t.status.buffs.stability} />
-							<BuffItem icon="🧶" text={t.status.buffs.architecture} />
-							<BuffItem icon="🪐" text={t.status.buffs.global} />
+							<BuffItem icon="•" text={t.status.buffs.speed} />
+							<BuffItem icon="•" text={t.status.buffs.stability} />
+							<BuffItem icon="•" text={t.status.buffs.architecture} />
+							<BuffItem icon="•" text={t.status.buffs.global} />
 						</ul>
 					</div>
 				</div>
@@ -74,12 +74,12 @@ const StatRow = ({ label, value }: StatRowProps) => {
 
 	return (
 		<div className="flex items-center justify-between text-sm">
-			<span className="text-gray-400">{label}</span>
+			<span className="text-black font-bold">{label}</span>
 			<div className="flex items-center gap-2">
-				<div className="w-32 h-3 bg-gray-900 border border-gray-600">
-					<div className="h-full bg-terra-gold" style={{ width: `${percent}%` }} />
+				<div className="w-32 h-3 bg-gray-200 border border-gray-300 rounded-full overflow-hidden">
+					<div className="h-full bg-orange-500" style={{ width: `${percent}%` }} />
 				</div>
-				<span className="text-terra-gold w-8 text-right">{percent}</span>
+				<span className="text-orange-500 w-8 text-right font-bold">{percent}</span>
 			</div>
 		</div>
 	);
@@ -91,8 +91,8 @@ interface BuffItemProps {
 }
 
 const BuffItem = ({ icon, text }: BuffItemProps) => (
-	<li className="flex items-center gap-2 bg-gray-800 p-2 border border-gray-600 text-xs">
-		<span>{icon}</span>
+	<li className="flex items-center gap-2 bg-white p-2 border border-terra-border-light text-xs shadow-sm rounded text-black font-medium">
+		<span className="text-terra-blue">{icon}</span>
 		<span>{text}</span>
 	</li>
 );

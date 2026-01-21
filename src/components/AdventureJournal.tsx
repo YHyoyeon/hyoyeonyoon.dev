@@ -21,16 +21,16 @@ const AdventureJournal = () => {
 						key={log.id}
 						className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
 					>
-						<div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-terra-bg bg-slate-800 group-[.is-active]:bg-terra-gold text-slate-500 group-[.is-active]:text-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-							💀
+						<div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-terra-bg bg-terra-cloud group-[.is-active]:bg-orange-500 text-terra-border-dark group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+							<div className="w-2.5 h-2.5 bg-current rounded-full" />
 						</div>
 
-						<div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pixel-panel pixel-border p-4 md:p-6 bg-black/40 hover:bg-black/50 transition-colors border-2 border-gray-600 hover:border-gray-400">
+						<div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pixel-panel pixel-border p-4 md:p-6 transition-colors border-2 border-terra-border hover:border-terra-accent">
 							<div className="flex items-center justify-between space-x-2 mb-1">
-								<div className="font-bold text-slate-200">
+								<div className="font-bold text-black">
 									{t.journal.issue}{log.id}
 								</div>
-								<time className="font-medium text-terra-gold text-xs">
+								<time className="font-medium text-orange-500 text-xs">
 									{log.date || t.journal.unknownDate}
 								</time>
 							</div>
@@ -39,30 +39,30 @@ const AdventureJournal = () => {
 							</h3>
 
 							<div className="space-y-3 text-sm">
-								<div className="bg-black/40 p-2 border-l-2 border-terra-red">
+								<div className="bg-terra-cloud/30 p-2 border-l-2 border-terra-red">
 									<p className="text-xs text-terra-red font-bold mb-1">
 										{t.journal.threat}
 									</p>
-									<p className="text-gray-300">{log.problem[language]}</p>
+									<p className="text-black font-medium">{log.problem[language]}</p>
 								</div>
 
-								<div className="bg-black/40 p-2 border-l-2 border-terra-gold">
-									<p className="text-xs text-terra-gold font-bold mb-1">
+								<div className="bg-terra-cloud/30 p-2 border-l-2 border-orange-500">
+									<p className="text-xs text-orange-500 font-bold mb-1">
 										{t.journal.victory}
 									</p>
-									<p className="text-gray-300">{log.solution[language]}</p>
+									<p className="text-black font-medium">{log.solution[language]}</p>
 								</div>
 
 								<div className="mt-2 pt-2 border-t border-gray-700">
-									<p className="text-xs text-gray-400">
-										<span className="text-terra-gold">
+									<p className="text-xs text-black opacity-60 font-bold">
+										<span className="text-orange-500">
 											{t.journal.loot}
 										</span>{" "}
 										{log.result[language]}
 									</p>
 								</div>
 								{log.technicalDetails && (
-									<div className="mt-2 text-xs text-gray-400">
+									<div className="mt-2 text-xs text-black opacity-60 font-bold">
 										<ul className="list-disc list-inside">
 											{log.technicalDetails.map((detail, idx) => (
 												<li key={idx}>
